@@ -3,7 +3,7 @@ import { SearchIcon } from "../../../../public/icons/talent-client/SearchIcon";
 export const Search = ({ width = "" }) => {
     return (
       <div
-        className="h-[46px] 2xl:!w-[1080px] xl:w-full w-[487px] min-w-[375px] max-w-[1080px] border border-[#EAEAEA] rounded-[73px] flex gap-5 items-center"
+        className="h-[46px] 2xl:!w-[1080px] xl:w-[873px] w-full min-w-[375px] max-w-[1080px] border border-[#EAEAEA] rounded-[73px] flex gap-5 items-center"
         style={{ width }}
       >
         <SearchIcon/>

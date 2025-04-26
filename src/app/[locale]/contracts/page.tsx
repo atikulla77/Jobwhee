@@ -12,10 +12,18 @@ const page = () => {
 					Total payment now: <span>3K</span>
 				</p>
 			</div>
-			<div className="flex justify-between">
-				<div className="max-w-[252px] h-[188px] flex flex-col justify-between text-[#18470D]">
+			<div className="flex flex-col xl:px-0 px-[15px]">
+				<div className="flex items-center justify-between">
+				<div className="max-w-[252px] flex flex-col justify-between text-[#18470D]">
 					<h1 className="font-medium text-3xl">Active Contracts</h1>
-					<ul className="space-y-5 text-[16px] font-normal">
+					
+				</div><div>
+						<Search />
+					</div>
+				</div>
+				<div className="flex flex-wrap items-start justify-between mt-8 mb-8">
+					
+					<ul className="space-y-5 text-[16px] font-normal mb-8">
 						<li>
 							<Link href={""}>All contracts(3)</Link>
 						</li>
@@ -26,12 +34,7 @@ const page = () => {
 							<Link href={""}>Awaiting Milestones(6)</Link>
 						</li>
 					</ul>
-				</div>
-				<div>
-					<div>
-						<Search />
-					</div>
-					<div className="mt-8 mb-8 space-y-8">
+					<div className="2xl:!w-[1080px] xl:w-[873px] w-full min-w-[375px] max-w-[1080px] space-y-8">
 						{mockContracts?.map(contract => (
 							<ContractCard key={contract.id} contract={contract} />
 						))}
