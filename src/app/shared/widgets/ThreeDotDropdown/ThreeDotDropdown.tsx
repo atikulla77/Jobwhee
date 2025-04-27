@@ -32,13 +32,13 @@ const ThreeDotDropdown = ({ children }: { children: React.ReactNode }) => {
 
       {dropdownOpen && (
         <div className="threeDotsDropdownShadow rounded-[6px] w-[227px] p-[16px] bg-white h-fit top-[calc(100%_+_22px)] absolute">
-          {/* <Image
+          <Image
             src={"/threeDotsTop.png"}
             width={27}
             height={20}
             alt="dropdown-top"
             className="absolute -top-[20px] left-2/4 -translate-x-[50%]"
-          /> */}
+          />
           {children}
         </div>
       )}
