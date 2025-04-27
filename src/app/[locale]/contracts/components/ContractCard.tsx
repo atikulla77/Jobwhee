@@ -1,25 +1,28 @@
-import ThreeDotDropdown from "@/app/shared/widgets/ThreeDotDropdown/ThreeDotDropdown";
 import { BriefcaseIcon } from "../../../../../public/icons/BriefcaseIcon";
 import { TagIcon } from "../../../../../public/icons/TagIcon";
 import { DocumentIcon } from "../../../../../public/icons/DocumentIcon";
 import ContractActionMenu from "./ContractActionMenu";
+import Button from "@/app/shared/ui-kit/Button";
 
 interface ContractCardProps {
 	id: string;
 	title: string;
 	description: string;
-	status: "ongoing" | "pending" | "closed" | "dispute";
+	status: string;
 	startDate: string;
 	endDate: string;
 	hiredBy: string;
 	category: string;
-	primaryAction: "Submit work for payment" | "See Timesheet" | null;
+	primaryAction: string;
 	menuOptions: string[];
 }
 
 const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
 	contract,
 }) => {
+	const handleButton = (action: string) => {
+		alert(action);
+	};
 	return (
 		<div
 			className="rounded-[25px] border border-[#EAEAEA] border-b-4 border-b-[#CBEC5E] bg-white shadow-lg hover:shadow-xl transition-all duration-300 w-full mx-auto
@@ -27,10 +30,12 @@ const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
       ">
 			<div className="flex flex-col sm:flex-row justify-between items-start gap-4">
 				<div className="flex items-center gap-2">
-					<div className="text-green-600 text-[16px] sm:text-2xl">
-						<DocumentIcon />
+					<div className="text-[#18470D] text-[16px] sm:text-[24px] flex items-center">
+						<button onClick={()=>alert('button is clicked ')} title="" className="cursor-pointer ">
+							<DocumentIcon />
+						</button>
 					</div>
-					<h2 className="2xl:!text-[30px] sm:text-[20px] text-[16px] font-medium text-[#18470D]">
+					<h2 className="2xl:!text-[24px] sm:text-[20px] text-[16px] font-medium text-[#18470D]">
 						{contract.title}
 					</h2>
 				</div>
@@ -54,30 +59,30 @@ const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
 				{contract.description}
 			</p>
 
-			<div className="flex flex-col sm:flex-row sm:flex-wrap justify-between items-start sm:items-center mt-4 gap-4">
+			<div className="flex flex-col sm:flex-row sm:flex-wrap justify-between items-start sm:items-center mt-[50px] gap-4">
 				<div className="flex sm:flex-row flex-wrap items-center gap-3 sm:gap-4 text-black text-sm xl:text-base lg:text-[16px] font-normal">
 					<div className="text-gray-500">
 						{contract.startDate} - {contract.endDate}
 					</div>
 					<div className="flex items-center gap-1">
-						<BriefcaseIcon /> Hired by {contract.hiredBy}
+						<BriefcaseIcon width={18} height={18} /> Hired by {contract.hiredBy}
 					</div>
 					<div className="flex items-center gap-1">
-						<TagIcon /> {contract.category}
+						<TagIcon width={18} height={18} /> {contract.category}
 					</div>
 				</div>
 
 				<div className="flex justify-between items-center gap-2 sm:gap-3 mt-2 sm:mt-0 w-full sm:w-auto">
 					{contract.primaryAction && (
-						<button
-							className={`sm:w-fit w-full rounded-full px-4 py-2 sm:px-5 sm:py-3 font-medium text-sm xl:text-base lg:text-[16px] transition-all duration-300
-                ${
-									contract.primaryAction === "Submit work for payment"
-										? "bg-[#CBEC5E] text-[#18470D] hover:bg-[#ACD624] cursor-pointer"
-										: "border border-[#EAEAEA] text-[#000] cursor-pointer"
-								}`}>
-							{contract.primaryAction}
-						</button>
+						<Button
+							handleButton={handleButton}
+							text={contract.primaryAction}
+							type={
+								contract.primaryAction === "Submit work for payment"
+									? "active"
+									: "transparent"
+							}
+						/>
 					)}
 					<div className="text-gray-500 cursor-pointer text-xl sm:text-2xl">
 						<ContractActionMenu menuOptions={contract.menuOptions} />

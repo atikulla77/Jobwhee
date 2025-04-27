@@ -16,6 +16,7 @@ import { TextArea } from "@/app/shared/ui-kit/TextArea";
 import { useState, useEffect } from "react";
 import { EmptyJobField } from "@/app/shared/ui-kit/EmptyJobField";
 import ComponentItem from "./shared/ui-kit/ComponentItem";
+import Link from "next/link";
 
 const dropDownDataInit = [
   {
@@ -63,6 +64,8 @@ export default function ComponentsPage() {
 
   return (
     <div className="p-10 flex flex-col gap-8   ">
+
+      <Link href={'/local/contracts'}>Go to Contracts page</Link>
       <h1 className="mb-[2em]">Components Page</h1>
       <ComponentItem name="Dropdown" src="src/shared/ui-kit/Dropdown.tsx">
         <Dropdown

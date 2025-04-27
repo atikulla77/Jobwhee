@@ -1,12 +1,12 @@
-export const BriefcaseIcon = () => {
+export const BriefcaseIcon = ({ width = 24, height = 24 }) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			width="20.69048309326172"
-			height="19.308948516845703"
+			width={width}
+			height={height}
 			fill="none"
 			viewBox="0 0 24 24"
-			stroke-width="1.5"
+			strokeWidth="1.5"
 			stroke="currentColor">
 			<path
 				strokeLinecap="round"

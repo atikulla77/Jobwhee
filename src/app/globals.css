@@ -1,331 +1,334 @@
 @import "tailwindcss";
 
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background: var(--background);
+	color: var(--foreground);
+	font-family: Arial, Helvetica, sans-serif;
 }
 
-
-@import 'react-toastify/dist/ReactToastify.css';
+@import "react-toastify/dist/ReactToastify.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff93;
-  /* --foreground: #171717; */
+	--background: #ffffff93;
+	/* --foreground: #171717; */
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {}
+	:root {
+	}
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  height: fit;
+	color: var(--foreground);
+	background: var(--background);
+	height: fit;
 }
 
 .clipped-image {
-  clippath: polygon(5% 0%,
-      95% 0%,
-      100% 10%,
-      100% 90%,
-      95% 100%,
-      5% 100%,
-      0% 90%,
-      0% 10%);
-  border-radius: 10px;
-  /* Adjust for smooth rounded corners */
-  overflow: hidden;
+	clippath: polygon(
+		5% 0%,
+		95% 0%,
+		100% 10%,
+		100% 90%,
+		95% 100%,
+		5% 100%,
+		0% 90%,
+		0% 10%
+	);
+	border-radius: 10px;
+	/* Adjust for smooth rounded corners */
+	overflow: hidden;
 }
 
 .folder {
-  transform: rotateY(180deg);
+	transform: rotateY(180deg);
 
-  margin: 10em auto 10em;
+	margin: 10em auto 10em;
 
-  border-radius: 5px 25px 25px 25px;
+	border-radius: 5px 25px 25px 25px;
 
-  background: white;
-  position: relative;
+	background: white;
+	position: relative;
 }
 
 .folderreverse {
-  transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
 
 .folder::before {
-  content: "";
-  position: absolute;
-  top: -18px;
-  width: 500px;
-  height: 66px;
-  background: white;
-  border-radius: 25px 0 0 0;
-  clippath: path("M 0 0 L 160 0 C 185 2, 175 16, 200 18 L 0 50 z");
+	content: "";
+	position: absolute;
+	top: -18px;
+	width: 500px;
+	height: 66px;
+	background: white;
+	border-radius: 25px 0 0 0;
+	clippath: path("M 0 0 L 160 0 C 185 2, 175 16, 200 18 L 0 50 z");
 }
 
 .mask {
-  -webkit-mask-image: url("/hero-img-subtract.png");
-  mask-image: url("/hero-img-subtract.png");
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  mask-position: bottom center;
-  border-radius: 50px;
+	-webkit-mask-image: url("/hero-img-subtract.png");
+	mask-image: url("/hero-img-subtract.png");
+	mask-repeat: no-repeat;
+	-webkit-mask-repeat: no-repeat;
+	mask-position: bottom center;
+	border-radius: 50px;
 }
 
 .react-datepicker {
-  font-family: Poppins, Poppins Fallback !important;
+	font-family: Poppins, Poppins Fallback !important;
 }
 
 .react-datepicker-wrapper {
-  width: 100%;
-  margin-bottom: 0;
+	width: 100%;
+	margin-bottom: 0;
 }
 
 .react-datepicker__header {
-  background-color: transparent !important;
-  padding-top: 0 !important;
-  border-bottom: none !important;
+	background-color: transparent !important;
+	padding-top: 0 !important;
+	border-bottom: none !important;
 }
 
 .react-datepicker__triangle {
-  display: none;
+	display: none;
 }
 
 .react-datepicker__day-name {
-  color: #8B939F !important;
-  font-size: 13.33px !important;
-  width: auto !important;
-  margin: 0 !important;
+	color: #8b939f !important;
+	font-size: 13.33px !important;
+	width: auto !important;
+	margin: 0 !important;
 }
 
 .react-datepicker__day-name:hover {
-  color: #414750 !important;
+	color: #414750 !important;
 }
 
 .react-datepicker__day--keyboard-selected {
-  background-color: #18470D !important;
-  color: #EAEAEA !important;
+	background-color: #18470d !important;
+	color: #eaeaea !important;
 }
 
 .react-datepicker__day--keyboard-selected:hover {
-  color: #414750 !important;
+	color: #414750 !important;
 }
 
 .react-datepicker__week {
-  gap: 13px;
-  display: flex;
+	gap: 13px;
+	display: flex;
 }
 
 .react-datepicker__week {
-  margin-bottom: 16px;
+	margin-bottom: 16px;
 }
 
 .react-datepicker__today-button {
-  width: 100% !important;
-  height: 48px !important;
-  max-width: 300px !important;
-  background: #CBEC5E !important;
-  border-radius: 49px !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none !important;
-  color: #18470D !important;
-  font-size: 16px !important;
-  font-weight: 500 !important;
+	width: 100% !important;
+	height: 48px !important;
+	max-width: 300px !important;
+	background: #cbec5e !important;
+	border-radius: 49px !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none !important;
+	color: #18470d !important;
+	font-size: 16px !important;
+	font-weight: 500 !important;
 }
 
 .react-datepicker__day-names {
-  display: flex;
-  width: 251px !important;
-  justify-content: space-between;
-  margin-left: 13px;
+	display: flex;
+	width: 251px !important;
+	justify-content: space-between;
+	margin-left: 13px;
 }
 
 .react-datepicker__month {
-  margin-left: 12px !important;
-  width: 252px;
+	margin-left: 12px !important;
+	width: 252px;
 }
 
 .react-datepicker__day--outside-month {
-  color: #8B939F !important;
+	color: #8b939f !important;
 }
 
-.react-datepicker__day:not(.react-datepicker__day--outside-month, .react-datepicker__day--keyboard-selected, .react-datepicker__day--selected) {
-  color: #414750 !important;
+.react-datepicker__day:not(
+		.react-datepicker__day--outside-month,
+		.react-datepicker__day--keyboard-selected,
+		.react-datepicker__day--selected
+	) {
+	color: #414750 !important;
 }
 
 .react-datepicker__day--keyboard-selected {
-  color: #EAEAEA !important;
-  font-weight: 400 !important;
+	color: #eaeaea !important;
+	font-weight: 400 !important;
 }
 
 .react-datepicker__day--selected {
-  background: #18470D !important;
-  color: #EAEAEA !important;
+	background: #18470d !important;
+	color: #eaeaea !important;
 }
 
 .react-datepicker__day.react-datepicker__day--selected:hover {
-  color: #414750 !important;
+	color: #414750 !important;
 }
 
 .react-datepicker__day {
-  font-weight: 400 !important;
+	font-weight: 400 !important;
 }
 
 .date-year-dropdown::-webkit-scrollbar {
-  width: 6px;
+	width: 6px;
 }
 
 .date-year-dropdown::-webkit-scrollbar-track {
-  background: transparent;
+	background: transparent;
 }
 
 .date-year-dropdown::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 20px;
+	background-color: #888;
+	border-radius: 20px;
 }
 
 .date-year-dropdown::-webkit-scrollbar-thumb:hover {
-  background-color: #b3b3b3;
+	background-color: #b3b3b3;
 }
 
 .date-year-dropdown {
-  appearance: none;
-  -webkit-appearance: none;
-  /* Для Safari */
-  -moz-appearance: none;
-  /* Для Firefox */
+	appearance: none;
+	-webkit-appearance: none;
+	/* Для Safari */
+	-moz-appearance: none;
+	/* Для Firefox */
 }
 
 .react-datepicker__tab-loop {
-  width: 100%;
-  position: relative;
+	width: 100%;
+	position: relative;
 }
 
 .react-datepicker-popper {
-  width: calc(100% + 34px);
+	width: calc(100% + 34px);
 }
 
 @keyframes slideIn {
-  0% {
-    transform: translate(100%, 100%);
-  }
+	0% {
+		transform: translate(100%, 100%);
+	}
 
-  100% {
-    transform: translate(0, 0);
-  }
+	100% {
+		transform: translate(0, 0);
+	}
 }
 
 @keyframes slideInMobile {
-  0% {
-    transform: translate(0%, 100%);
-  }
+	0% {
+		transform: translate(0%, 100%);
+	}
 
-  100% {
-    transform: translate(0, 0);
-  }
+	100% {
+		transform: translate(0, 0);
+	}
 }
 
 .animate-slideIn {
-  animation: slideIn 0.5s ease-out forwards;
+	animation: slideIn 0.5s ease-out forwards;
 }
 
 @media (max-width: 640px) {
-  .animate-slideIn {
-    animation: slideInMobile 0.5s ease-out forwards;
-  }
+	.animate-slideIn {
+		animation: slideInMobile 0.5s ease-out forwards;
+	}
 }
 
 .notification-scrollbar::-webkit-scrollbar {
-  width: 5px;
+	width: 5px;
 }
 
 .notification-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #D9DDDE;
-  border-radius: 200px;
+	background-color: #d9ddde;
+	border-radius: 200px;
 }
 
 .blue-shadow {
-  box-shadow: 0px 0px 5px 1px rgba(40, 113, 230, 0.3);
+	box-shadow: 0px 0px 5px 1px rgba(40, 113, 230, 0.3);
 }
 
 .card-shadow {
-  box-shadow: 0px 2px 12.9px 0px #2B5BB529;
+	box-shadow: 0px 2px 12.9px 0px #2b5bb529;
 }
 
 .customScroll::-webkit-scrollbar {
-  width: 9px;
+	width: 9px;
 }
 
 .customScroll::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
+	background: #f1f1f1;
+	border-radius: 10px;
 }
 
 .customScroll::-webkit-scrollbar-thumb {
-  background-color: #D9D9D9;
-  border-radius: 10px;
-  border: 2px solid #f1f1f1;
-  width: 9px;
+	background-color: #d9d9d9;
+	border-radius: 10px;
+	border: 2px solid #f1f1f1;
+	width: 9px;
 }
 
 .customScroll::-webkit-scrollbar-thumb:hover {
-  background-color: #718096;
+	background-color: #718096;
 }
 
 @media screen and (max-width: 639px) {
-  .customScroll::-webkit-scrollbar {
-    width: 4px;
-  }
+	.customScroll::-webkit-scrollbar {
+		width: 4px;
+	}
 
-  .customScroll::-webkit-scrollbar-thumb {
-    width: 4px;
-  }
-
+	.customScroll::-webkit-scrollbar-thumb {
+		width: 4px;
+	}
 }
 /* Scrollbar Styles (for Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
-  width: 8px;
+	width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+	background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #AEB3BC; /* your brand color */
-  border-radius: 20px;
-  border: 2px solid white; /* adds a padding effect */
+	background-color: #aeb3bc; /* your brand color */
+	border-radius: 20px;
+	border: 2px solid white; /* adds a padding effect */
 }
 
 /* Optional: for Firefox */
 * {
-  scrollbar-width: thin;
-  scrollbar-color: #AEB3BC transparent;
+	scrollbar-width: thin;
+	scrollbar-color: #aeb3bc transparent;
 }
 .education-modal::-webkit-scrollbar {
-  width: 8px;
+	width: 8px;
 }
 
 .education-modal::-webkit-scrollbar-track {
-  background: transparent;
+	background: transparent;
 }
 
 .education-modal::-webkit-scrollbar-thumb {
-  background-color: #AEB3BC;
-  border-radius: 10px;
-  border: 2px solid white;
+	background-color: #aeb3bc;
+	border-radius: 10px;
+	border: 2px solid white;
 }
 
 /* Optional for Firefox */
 .education-modal {
-  scrollbar-width: thin;
-  scrollbar-color: #AEB3BC transparent;
+	scrollbar-width: thin;
+	scrollbar-color: #aeb3bc transparent;
 }
