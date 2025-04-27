@@ -22,15 +22,15 @@ const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
 }) => {
 	return (
 		<div
-			className="rounded-[25px] border border-[#EAEAEA] border-b-4 border-b-[#CBEC5E] bg-white shadow-lg hover:shadow-xl transition-all duration-300 w-full mx-auto  max-w-[375px] sm:max-w-[704px] lg:max-w-[1408px]
+			className="rounded-[25px] border border-[#EAEAEA] border-b-4 border-b-[#CBEC5E] bg-white shadow-lg hover:shadow-xl transition-all duration-300 w-full mx-auto
       p-6 md:p-7 lg:p-9
       ">
 			<div className="flex flex-col sm:flex-row justify-between items-start gap-4">
 				<div className="flex items-center gap-2">
-					<div className="text-green-600 text-xl sm:text-2xl">
+					<div className="text-green-600 text-[16px] sm:text-2xl">
 						<DocumentIcon />
 					</div>
-					<h2 className="sm:text-2xl lg:text-[24px] text-xl font-medium text-[#18470D]">
+					<h2 className="2xl:!text-[30px] sm:text-[20px] text-[16px] font-medium text-[#18470D]">
 						{contract.title}
 					</h2>
 				</div>
@@ -50,27 +50,27 @@ const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
 				</div>
 			</div>
 
-			<p className="text-black text-base sm:text-lg font-[400] leading-relaxed mt-2 sm:mt-3 lg:mt-2">
+			<p className="text-black xl:!text-lg sm:text-[16px] text-[14px]  font-[400] leading-relaxed mt-5">
 				{contract.description}
 			</p>
 
 			<div className="flex flex-col sm:flex-row sm:flex-wrap justify-between items-start sm:items-center mt-4 gap-4">
-				<div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 text-black text-sm sm:text-base lg:text-[16px] font-normal">
-					<span className="text-gray-500">
+				<div className="flex sm:flex-row flex-wrap items-center gap-3 sm:gap-4 text-black text-sm xl:text-base lg:text-[16px] font-normal">
+					<div className="text-gray-500">
 						{contract.startDate} - {contract.endDate}
-					</span>
-					<p className="flex items-center gap-1">
+					</div>
+					<div className="flex items-center gap-1">
 						<BriefcaseIcon /> Hired by {contract.hiredBy}
-					</p>
-					<span className="flex items-center gap-1">
+					</div>
+					<div className="flex items-center gap-1">
 						<TagIcon /> {contract.category}
-					</span>
+					</div>
 				</div>
 
 				<div className="flex justify-between items-center gap-2 sm:gap-3 mt-2 sm:mt-0 w-full sm:w-auto">
 					{contract.primaryAction && (
 						<button
-							className={`rounded-full px-4 py-2 sm:px-5 sm:py-3 font-medium text-sm sm:text-base lg:text-[16px] transition-all duration-300
+							className={`sm:w-fit w-full rounded-full px-4 py-2 sm:px-5 sm:py-3 font-medium text-sm xl:text-base lg:text-[16px] transition-all duration-300
                 ${
 									contract.primaryAction === "Submit work for payment"
 										? "bg-[#CBEC5E] text-[#18470D] hover:bg-[#ACD624] cursor-pointer"
