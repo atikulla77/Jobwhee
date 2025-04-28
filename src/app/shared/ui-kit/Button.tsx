@@ -11,7 +11,7 @@ const Button: React.FC<ButtonProps> = ({
 	return (
 		<button
 			onClick={() => handleButton(text)}
-			className={`sm:h-[48px] h-[40px] sm:px-4 px-7 sm:text-[16px] text-[14px] rounded-full font-medium transition-all duration-300
+			className={`w-full xl:h-[48px] h-[40px] xl:px-4 px-5 xl:text-[16px] text-[13px] rounded-full font-medium transition-all duration-300
         ${
 					type === "active"
 						? "bg-[#CBEC5E] text-[#18470D] hover:bg-[#ACD624] cursor-pointer"

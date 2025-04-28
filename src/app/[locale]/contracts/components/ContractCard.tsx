@@ -31,7 +31,7 @@ const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
 			<div className="flex flex-col sm:flex-row justify-between items-start gap-4">
 				<div className="flex items-center gap-2">
 					<div className="text-[#18470D] text-[16px] sm:text-[24px] flex items-center">
-						<button onClick={()=>alert('button is clicked ')} title="" className="cursor-pointer ">
+						<button onClick={()=>alert('button is clicked ')} title="" className="cursor-pointer sm:w-[20px] w-[17px] sm:h-[20px] h-[17px]">
 							<DocumentIcon />
 						</button>
 					</div>
@@ -59,7 +59,7 @@ const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
 				{contract.description}
 			</p>
 
-			<div className="flex flex-col sm:flex-row sm:flex-wrap justify-between items-start sm:items-center mt-[50px] gap-4">
+			<div className="flex flex-col sm:flex-row sm:flex-wrap justify-between items-start sm:items-center xl:mt-[50px] mt-[30px] gap-4">
 				<div className="flex sm:flex-row flex-wrap items-center gap-3 sm:gap-4 text-black text-sm xl:text-base lg:text-[16px] font-normal">
 					<div className="text-gray-500">
 						{contract.startDate} - {contract.endDate}
@@ -72,9 +72,10 @@ const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
 					</div>
 				</div>
 
-				<div className="flex justify-between items-center gap-2 sm:gap-3 mt-2 sm:mt-0 w-full sm:w-auto">
+				<div className="flex justify-between items-center gap-2 sm:gap-3 mt-0 w-full sm:w-auto">
 					{contract.primaryAction && (
-						<Button
+						<div className="sm:w-fit w-full">
+							<Button
 							handleButton={handleButton}
 							text={contract.primaryAction}
 							type={
@@ -83,6 +84,7 @@ const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
 									: "transparent"
 							}
 						/>
+						</div>
 					)}
 					<div className="text-gray-500 cursor-pointer text-xl sm:text-2xl">
 						<ContractActionMenu menuOptions={contract.menuOptions} />

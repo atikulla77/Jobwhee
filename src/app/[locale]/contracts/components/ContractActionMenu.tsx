@@ -24,7 +24,7 @@ const ContractActionMenu = ({ menuOptions }: { menuOptions: string[] }) => {
 					dropdownOpen ? "bg-[#FBFFED]" : "bg-white"
 				} ml-auto w-[40px] h-[40px] border border-[#CBEC5E] rounded-full flex justify-center items-center cursor-pointer`}
 				onClick={() => setDropdownOpen(!dropdownOpen)}>
-				<div className="w-[24px] h-[24px]">
+				<div className="xl:w-[24px] w-[20px] xl:h-[24px] h-[20px]">
 					<ThreeDotIcon />
 				</div>
 			</div>
