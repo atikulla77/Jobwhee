@@ -11,7 +11,7 @@ const Button: React.FC<ButtonProps> = ({
 	return (
 		<button
 			onClick={() => handleButton(text)}
-			className={`w-full h-full flex items-center justify-center ${type === "transparent" ? "xl:px-[41px] px-3":"xl:px-[25px] px-3"}  xl:text-[16px] text-[13px] rounded-full font-medium transition-all duration-300
+			className={`w-full h-full flex items-center justify-center ${type === "transparent" ? "xl:px-[41px] px-[25px]":"xl:px-[25px] px-[20px]"}  md:text-[16px] text-[13px] rounded-full font-medium transition-all duration-300
         ${
 					type === "active"
 						? "bg-[#CBEC5E] text-[#18470D] hover:bg-[#ACD624] cursor-pointer"
