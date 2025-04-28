@@ -66,7 +66,7 @@ const Page = () => {
 					</div>
 				</div>
 				<div className="flex flex-col lg:flex-row flex-wrap sm:items-start sm:justify-between 2xl:mt-[68px] mt-[40px] mb-20 gap-6 sm:gap-0">
-					<ul className="space-y-[15px] text-sm sm:text-[16px] font-normal mb-4 sm:mb-8">
+					<ul className="2xl:space-y-[15px] space-y-[16px] text-sm sm:text-[16px] font-normal mb-4 sm:mb-8">
 						<li>
 							<button
 								onClick={() => handleCategoryChange("all")}

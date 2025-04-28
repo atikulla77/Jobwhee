@@ -47,7 +47,7 @@ const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
 		<div
 			className="rounded-[25px] border border-[#EAEAEA] border-b-[6px] border-b-[#CBEC5E] bg-white shadow-[0px_4px_20px_0px_#00000017] w-full 2xl:h-[303px] sm:h-[350px] h-[475px] mx-auto 2xl:px-[38px] md:px-[23px] sm:px-6 px-5 relative md:py-[38px] sm:py-6 py-5">
 			<div className="flex flex-col sm:flex-row justify-between items-start gap-4">
-				<div className="flex items-center gap-[5px]">
+				<div className="flex items-center 2xl:gap-[5px] gap-[7px]">
 					<div className="text-[#18470D] text-[16px] sm:text-[24px] flex items-center">
 						<button
 							onClick={() => alert("button is clicked ")}
@@ -56,13 +56,13 @@ const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
 							<DocumentIcon />
 						</button>
 					</div>
-					<h2 className="2xl:text-[24px] sm:text-[20px] text-[16px] font-medium text-[#18470D] mt-[-1px]">
+					<h2 className="2xl:text-[24px] sm:text-[20px] text-[16px] font-medium text-[#18470D] 2xl:mt-[-1px] mt-[1px]">
 						{contract.title}
 					</h2>
 				</div>
 
 				<div
-					className={`px-3 py-1 rounded-full text-xs sm:text-sm lg:text-[16px] font-medium capitalize
+					className={`2xl:px-3 px-4 py-[5px] rounded-full text-xs sm:text-sm lg:text-[16px] font-medium capitalize
             ${
 							contract.status === "ongoing"
 								? "bg-[#EEF6DB] text-[#5A7D06] mr-[25px]"
