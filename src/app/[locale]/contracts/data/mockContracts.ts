@@ -3,8 +3,9 @@
 export const mockContracts = [
 	{
 		id: "abc123",
-		title: "Weekly House Cleaning",
-		description: "Regular weekly cleaning service for residential homes.",
+		title: "Weekly House Cleaning Service for a 3-Bedroom Apartment",
+		description:
+			"RRegular weekly cleaning service for a 3-bedroom apartment, including dusting, vacuuming, mopping, and sanitizing common areas, kitchen, and bathrooms.",
 		status: "ongoing",
 		startDate: "March 14, 2025",
 		endDate: "Present",
@@ -15,9 +16,9 @@ export const mockContracts = [
 	},
 	{
 		id: "def456",
-		title: "Website Redesign Project",
+		title: "Full-Time Nanny for Infant Child Care (Monday-Friday)",
 		description:
-			"Complete redesign of corporate website including mobile responsiveness.",
+			"Regular weekly cleaning service for a 3-bedroom apartment, including dusting, vacuuming, mopping, and sanitizing common areas, kitchen, and bathrooms.",
 		status: "pending",
 		startDate: "February 10, 2025",
 		endDate: "Present",
@@ -28,9 +29,9 @@ export const mockContracts = [
 	},
 	{
 		id: "ghi789",
-		title: "Social Media Management",
+		title: "On-Site Chef for a Private Dinner Party",
 		description:
-			"Managing Facebook, Instagram, and LinkedIn accounts for brand engagement.",
+			"Experienced on-site chef providing a customized gourmet dining experience for a private dinner party, including meal preparation and plating",
 		status: "closed",
 		startDate: "January 1, 2025",
 		endDate: "April 15, 2025",
@@ -41,8 +42,9 @@ export const mockContracts = [
 	},
 	{
 		id: "jkl012",
-		title: "Mobile App Bug Fixing",
-		description: "Fixing critical bugs and performance issues in Android app.",
+		title: "Full Engine and Hull Servicing for a Private Yacht",
+		description:
+			"Regular weekly cleaning service for a 3-bedroom apartment, including dusting, vacuuming, mopping, and sanitizing common areas, kitchen, and bathrooms.",
 		status: "dispute",
 		startDate: "March 1, 2025",
 		endDate: "March 20, 2025",
