@@ -1,4 +1,4 @@
-export const SearchIcon = ({width = 51,height = 50}) => {
+export const SearchIcon = ({width = 43,height = 43}) => {
   return (
     <svg
       width={width}

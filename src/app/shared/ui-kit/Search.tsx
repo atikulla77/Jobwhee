@@ -8,10 +8,8 @@ interface SearchProps {
 
 export const Search: React.FC<SearchProps> = ({ setSearch }) => {
 	return (
-		<div className="h-[46px] w-full max-w-[1080px] border border-[#EAEAEA] rounded-[73px] flex sm:gap-5 gap-3 items-center">
-			<div className="w-[50px] h-[50px]">
+		<div className="h-[46px] w-full max-w-[1080px] border border-[#EAEAEA] rounded-[73px] flex sm:gap-[20px] gap-3 pl-[1px] items-center">
 			<SearchIcon />
-			</div>
 			<input
 				onChange={e => setSearch(e.target.value)}
 				className="  w-full h-6 text-base font-medium sm:text-[16px] text-[13px] outline-none text-[#737373] placeholder:text-[#737373]"

@@ -1,14 +1,43 @@
+"use client"; // Required for client-side features like useRouter in App Router
+
+import { useRouter } from "next/navigation";
+
 interface ContractActionsDropDownProps {
-	menuOptions: string[];
+	contract: any;
 	setDropdownOpen: (open: boolean) => void;
 	dropdownOpen: boolean;
 }
 
 const ContractActionsDropDown: React.FC<ContractActionsDropDownProps> = ({
-	menuOptions,
+	contract,
 	setDropdownOpen,
 	dropdownOpen,
 }) => {
+	const router = useRouter();
+
+	// Placeholder route 
+	const getRouteForOption = (option: string) => {
+		const lowerOption = option.toLowerCase().replace(/\s+/g, "-");
+		switch (lowerOption) {
+			case "view-contract":
+				return `/contract/${contract?.id}/view`;
+			case "edit-contract":
+				return `/contract/${contract?.id}/edit`;
+			case "delete-contract":
+				return `/contract/${contract?.id}/delete`;
+			case "submit-work":
+				return `/contract/${contract?.id}/submit`;
+			default:
+				return `/contract/${contract?.id}/${lowerOption}`;
+		}
+	};
+
+	const handleOptionClick = (option: string) => {
+		setDropdownOpen(false);
+		const route = getRouteForOption(option);
+		router.push(route);
+	};
+
 	return (
 		<div className="relative">
 			{dropdownOpen && (
@@ -19,11 +48,11 @@ const ContractActionsDropDown: React.FC<ContractActionsDropDownProps> = ({
 								<div className="absolute left-0 top-[6px] w-[27px] h-[27px] bg-white shadow-[0px_0px_2px_0px_#e4e4e494] rotate-[47deg]"></div>
 							</div>
 						</div>
-						{menuOptions.map((option, index) => (
+						{contract?.menuOptions.map((option:string, index:number) => (
 							<li key={index}>
 								<button
 									className="w-full cursor-pointer hover:bg-[#c8c8c842] transition-all text-left px-4 sm:py-[10px] py-[6px] sm:text-[16px] text-[14px] font-[500] text-[#545454] rounded-md"
-									onClick={() => setDropdownOpen(false)}>
+									onClick={() => handleOptionClick(option)}>
 									{option}
 								</button>
 							</li>

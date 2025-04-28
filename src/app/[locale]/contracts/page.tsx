@@ -47,11 +47,11 @@ const Page = () => {
 	).length;
 
 	return (
-		<div className="max-w-[375px] overflow-hidden sm:max-w-[780px] xl:max-w-[1200px] 2xl:max-w-[1430px] p-4 mx-auto ">
-			<div className="mt-8 sm:mb-14 mb-7 sm:max-w-full mx-auto sm:flex sm:justify-between sm:items-center px-4 sm:px-8 py-4 border-2 border-[#CBEC5E] rounded-2xl h-auto sm:h-[116px]">
+		<div className="max-w-[375px] sm:max-w-[780px] xl:max-w-[1200px] 2xl:max-w-[1430px] mx-auto ">
+			<div className="mt-8 2xl:mb-[50px] mb-[40px] sm:max-w-full mx-auto sm:flex sm:justify-between sm:items-center sm:pl-[26px] pl-4 2xl:pr-8 pr-[28px] py-4 border-2 border-[#CBEC5E] rounded-2xl h-auto sm:h-[116px]">
 				<h1 className="text-[20px] sm:text-[40px] font-medium">My contracts</h1>
-				<p className="text-[#545454] text-[14px] sm:text-2xl mt-2 sm:mt-0">
-					Total payment now: <span>3K</span>
+				<p className="text-[#545454] text-[14px] sm:text-2xl mt-2 sm:mt-0 tracking-[0.2px] mr-[-2px]">
+					Total payment now: <span className="tracking-[-0.5px] ml-[3px]">3K</span>
 				</p>
 			</div>
 			<div className="flex flex-col px-4 sm:px-[15px] xl:px-0">
@@ -65,8 +65,8 @@ const Page = () => {
 						<Search setSearch={setSearch} />
 					</div>
 				</div>
-				<div className="flex flex-col lg:flex-row flex-wrap sm:items-start sm:justify-between xl:mt-8 mt-4 mb-20 gap-6 sm:gap-0">
-					<ul className="space-y-5 text-sm sm:text-[16px] font-normal mb-4 sm:mb-8">
+				<div className="flex flex-col lg:flex-row flex-wrap sm:items-start sm:justify-between 2xl:mt-[68px] mt-[40px] mb-20 gap-6 sm:gap-0">
+					<ul className="space-y-[15px] text-sm sm:text-[16px] font-normal mb-4 sm:mb-8">
 						<li>
 							<button
 								onClick={() => handleCategoryChange("all")}
@@ -75,7 +75,7 @@ const Page = () => {
 										? "text-[#18470D]"
 										: "text-[#545454]"
 								}`}>
-								All contracts ({allContractsCount})
+								All contracts({allContractsCount})
 							</button>
 						</li>
 						<li>
@@ -86,7 +86,7 @@ const Page = () => {
 										? "text-[#18470D]"
 										: "text-[#545454]"
 								}`}>
-								Active Milestones ({activeMilestonesCount})
+								Active Milestones({activeMilestonesCount})
 							</button>
 						</li>
 						<li>
@@ -97,11 +97,11 @@ const Page = () => {
 										? "text-[#18470D]"
 										: "text-[#545454]"
 								}`}>
-								Awaiting Milestones ({awaitingMilestonesCount})
+								Awaiting Milestones({awaitingMilestonesCount})
 							</button>
 						</li>
 					</ul>
-					<div className="2xl:!w-[1080px] xl:w-[873px] w-[100%] space-y-8">
+					<div className="2xl:!w-[1080px] xl:w-[873px] w-[100%] grid gap-[30px]">
 						{filteredContracts.length > 0 ? (
 							filteredContracts.map(contract => (
 								<ContractCard key={contract.id} contract={contract} />

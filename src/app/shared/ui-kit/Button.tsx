@@ -11,12 +11,12 @@ const Button: React.FC<ButtonProps> = ({
 	return (
 		<button
 			onClick={() => handleButton(text)}
-			className={`w-full xl:h-[48px] h-[40px] xl:px-4 px-3 xl:text-[16px] text-[13px] rounded-full font-medium transition-all duration-300
+			className={`w-full h-full flex items-center justify-center ${type === "transparent" ? "xl:px-[41px] px-3":"xl:px-[25px] px-3"}  xl:text-[16px] text-[13px] rounded-full font-medium transition-all duration-300
         ${
 					type === "active"
 						? "bg-[#CBEC5E] text-[#18470D] hover:bg-[#ACD624] cursor-pointer"
 						: type === "transparent"
-						? "border border-[#EAEAEA] text-[#000] cursor-pointer"
+						? "border border-[#CCCCCC] text-[#18470D] cursor-pointer"
 						: "bg-[#E2E2E2] text-[#5B5B5B]"
 				}
       `}>
