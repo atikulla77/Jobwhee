@@ -1,8 +1,7 @@
-export const SearchIcon = ({width = 43,height = 43}) => {
+export const SearchIcon = () => {
   return (
     <svg
-      width={width}
-      height={height}
+      className="md:w-[43px] w-[44px] md:h-[43px] h-[44px]"
       viewBox="0 0 51 50"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
