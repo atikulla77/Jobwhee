@@ -12,7 +12,7 @@ export const mockContracts = [
 		hiredBy: "Katerina S.",
 		category: "House Cleaning",
 		primaryAction: "Submit work for payment",
-		menuOptions: [
+		actions: [
 			"View Work Details",
 			"End Contract",
 			"Request a Refund",
@@ -30,7 +30,7 @@ export const mockContracts = [
 		hiredBy: "Michael B.",
 		category: "Web Development",
 		primaryAction: "See Timesheet",
-		menuOptions: [
+		actions: [
 			"View Work Details",
 			"End Contract",
 			"Request a Refund",
@@ -48,7 +48,7 @@ export const mockContracts = [
 		hiredBy: "Sophia M.",
 		category: "Digital Marketing",
 		primaryAction: "Submit work for payment",
-		menuOptions: [
+		actions: [
 			"View Work Details",
 			"End Contract",
 			"Request a Refund",
@@ -66,7 +66,7 @@ export const mockContracts = [
 		hiredBy: "David L.",
 		category: "House Cleaning",
 		primaryAction: "Submit work for payment",
-		menuOptions: [
+		actions: [
 			"View Work Details",
 			"End Contract",
 			"Request a Refund",

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client"
+import { useState } from "react";
+
 
 export const Tabs = () => {
   const [activeTab, setActiveTab] = useState(0);

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import ContractCard from "./components/ContractCard";
+import ContractCard from "../../shared/widgets/ContractCard/ContractCard";
 import { Search } from "@/app/shared/ui-kit/Search";
 import { mockContracts } from "./data/mockContracts";
 
@@ -49,9 +49,12 @@ const Page = () => {
 	return (
 		<div className="max-w-[335px] md:max-w-[780px] xl:max-w-[1200px] 2xl:max-w-[1430px] mx-auto [@media(min-width:835px)]:px-0 md:px-[10px] px-0">
 			<div className="mt-8 2xl:mb-[50px] xl:mb-[40px] md:mb-[50px] mb-[30px] md:max-w-full mx-auto flex flex-wrap md:justify-between justify-start items-center xl:pl-[26px] md:pl-[19px] pl-[15px] 2xl:pr-8 xl:pr-[29px] pr-[23px] border-2 border-[#CBEC5E] rounded-2xl xl:h-[116px] md:h-[82px] h-[85px] md:py-0 py-[10px]">
-				<h1 className="xl:text-[40px] md:text-[28px] text-[20px] font-medium md:w-fit w-full">My contracts</h1>
+				<h1 className="xl:text-[40px] md:text-[28px] text-[20px] font-medium md:w-fit w-full">
+					My contracts
+				</h1>
 				<p className="text-[#545454] xl:text-2xl md:text-[16px] text-[14px] xl:tracking-[0.2px] md:tracking-[0.1px] tracking-[0px] xl:mr-0 md:mr-[-2px] mr-0 md:w-fit w-full">
-					Total payment now: <span className="tracking-[-0.5px] ml-[3px]">3K</span>
+					Total payment now:{" "}
+					<span className="tracking-[-0.5px] ml-[3px]">3K</span>
 				</p>
 			</div>
 			<div className="flex flex-col">

@@ -3,7 +3,7 @@ import ContractActionsDropDown from "@/app/shared/widgets/ContractActionsDropDow
 import { ThreeDotIcon } from "../../../../../public/icons/ThreeDotIcon";
 import { useState, useRef, useEffect } from "react";
 
-const ContractActionMenu = ({ contract }:any) => {
+const ContractActionMenu = ({ contract }: any) => {
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -22,7 +22,7 @@ const ContractActionMenu = ({ contract }:any) => {
 			<div
 				className={`${
 					dropdownOpen ? "bg-[#FBFFED]" : "bg-white"
-				} ml-auto w-[40px] h-[40px] border border-[#CBEC5E] rounded-full flex justify-center items-center cursor-pointer`}
+				} ml-auto xl:w-[48px] w-[40px] xl:h-[48px] h-[40px] border border-[#CBEC5E] rounded-full flex justify-center items-center cursor-pointer`}
 				onClick={() => setDropdownOpen(!dropdownOpen)}>
 				<div className="xl:w-[24px] w-[20px] xl:h-[24px] h-[20px]">
 					<ThreeDotIcon />
@@ -30,7 +30,8 @@ const ContractActionMenu = ({ contract }:any) => {
 			</div>
 			{dropdownOpen && (
 				<ContractActionsDropDown
-				contract={contract}
+					id={contract.id}
+					actions={contract.actions}
 					setDropdownOpen={setDropdownOpen}
 					dropdownOpen={dropdownOpen}
 				/>
