@@ -22,7 +22,7 @@ const ContractDropdownMenu = ({ contract }: any) => {
       <div
         className={`${
           dropdownOpen ? "bg-[#FBFFED]" : "bg-white"
-        } ml-auto xl:w-[48px] w-[40px] xl:h-[48px] h-[40px] border border-[#CBEC5E] rounded-full flex justify-center items-center cursor-pointer`}
+        } ml-auto md:w-[48px] w-[40px] md:h-[48px] h-[40px] border border-[#CBEC5E] rounded-full flex justify-center items-center cursor-pointer`}
         onClick={() => setDropdownOpen(!dropdownOpen)}>
         <div className="xl:w-[24px] w-[20px] xl:h-[24px] h-[20px]">
           <ThreeDotIcon />

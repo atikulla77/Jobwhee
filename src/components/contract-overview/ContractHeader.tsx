@@ -3,8 +3,8 @@ import ContractDropdownMenu from "@/app/shared/widgets/ContractDropdownMenu/Cont
 
 const ContractHeader = ({ contract }: any) => {
 	return (
-		<div className="mt-8 2xl:mb-[50px] xl:mb-[40px] md:mb-[50px] mb-[30px] md:max-w-full mx-auto flex flex-wrap md:justify-between justify-start items-center xl:pl-[26px] md:pl-[19px] pl-[15px] 2xl:pr-8 xl:pr-[29px] pr-[23px] border-2 border-[#CBEC5E] rounded-2xl xl:h-[116px] md:h-[82px] h-[85px] md:py-0 py-[10px]">
-			<h1 className="xl:text-[40px] md:text-[28px] text-[20px] font-medium md:w-fit w-full">
+		<div className="md:max-w-full mx-auto flex flex-wrap justify-between items-center xl:pl-[26px] md:pl-[19px] pl-[10px] xl:pr-[29px] md:pr-[23px] pr-[15px] border-[1.5px] border-[#CBEC5E] md:rounded-2xl rounded-[14px] 2xl:h-[116px] xl:h-[144px] md:h-[124px] h-[114px]">
+			<h1 className="2xl:w-fit xl:w-[744px] md:w-[521px] w-[243px] xl:text-[40px] md:text-[28px] text-[20px] font-medium">
 				{contract.title}
 			</h1>
 			<ContractDropdownMenu contract={contract} />

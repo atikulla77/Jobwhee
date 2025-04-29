@@ -11,6 +11,7 @@ body {
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
 	--background: #ffffff93;
 	/* --foreground: #171717; */
