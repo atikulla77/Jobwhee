@@ -2,6 +2,7 @@ import ContractTabs from "@/app/shared/widgets/ContractTabs/ContractTabs";
 import ContractHeader from "../../../../components/contract-overview/ContractHeader";
 import {mockContractDetail} from "./data/mockContractDetail";
 import FinancialSummary from "@/app/shared/widgets/FinancialSummary/FinancialSummary";
+import ContractMetaRow from "@/components/contract-overview/ContractMetaRow";
 
 const page = () => {
 	return (
@@ -12,10 +13,12 @@ const page = () => {
             <div className="2xl:mb-[30px] mb-[20px] ">
 				<ContractTabs />
 			</div>
-            <div className="">
+            <div className="2xl:mb-[50px] mb-[20px]">
 				<FinancialSummary />
 			</div>
-            
+			<div className="pb-[30rem]">
+				<ContractMetaRow />
+			</div>
 		</div>
 	);
 };
