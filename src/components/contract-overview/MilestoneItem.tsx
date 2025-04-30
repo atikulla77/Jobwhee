@@ -171,7 +171,6 @@ const MilestoneItem = ({ contract }: any) => {
               )}
             </div>
           ))}
-
         <div className="w-full flex md:justify-center justify-end">
           <div className="w-[1px] md:h-[30px] h-[20px] bg-[#c6c2c2a6] relative">
             <div className="absolute bottom-0 left-[-2.75px] w-[5.5px] h-[5.5px] rounded-[50%] bg-[#c6c2c2a6] "></div>
@@ -187,13 +186,13 @@ const MilestoneItem = ({ contract }: any) => {
             </h3>
           </div>
         </div>
-      </div>
-      <div className="w-[233px] xl:h-[48px] h-[40px] md:mx-auto mx-0 2xl:mt-[110px] xl:mt-[120px] mt-[48px] text-[15px] font-[500] text-[#18470D] md:ml-0 ml-[51px]">
-        <Button
-          type="transparent"
-          action="Manage Milestones"
-          handleButton={handleButton}
-        />
+        <div className="w-[233px] xl:h-[48px] h-[40px] flex md:!mx-auto mx-0 2xl:mt-[110px] xl:mt-[120px] mt-[48px] text-[15px] font-[500] text-[#18470D] md:ml-0 ml-[51px]">
+          <Button
+            type="transparent"
+            action="Manage Milestones"
+            handleButton={handleButton}
+          />
+        </div>
       </div>
     </div>
   );
