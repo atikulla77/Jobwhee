@@ -144,19 +144,21 @@ const MilestoneItem = () => {
             <div className="absolute bottom-0 left-[-2.75px] w-[5.5px] h-[5.5px] rounded-[50%] bg-[#c6c2c2a6] "></div>
           </div>
         </div>
-{/* Add new milestone Button */}
+        {/* Add new milestone Button */}
         <div className="w-full flex justify-center mt-[11px] relative">
           <div className="w-[36px] h-[36px] rounded-[50%] border-[1px] border-[#CBEC5E] flex justify-center items-center">
             <p className="text-[18px] h-[20px] text-[#18470D]">+</p>
           </div>
           <div className="absolute right-0 top-0 w-full h-full flex items-center justify-center">
-              <h3 className="text-[16px] font-[500] text-[#18470D] ml-[13.7rem]">
-                Add new milestone
-              </h3>
-            </div>
+            <h3 className="text-[16px] font-[500] text-[#18470D] ml-[13.7rem]">
+              Add new milestone
+            </h3>
+          </div>
         </div>
 
-        <button className="w-[233px] h-[48px] mt-[110px] text-[15px] font-[500] text-[#18470D] border-[1px] border-[#CCCCCC] rounded-[50px] flex justify-center items-center mx-auto">Manage Milestones</button>
+        <button className="w-[233px] h-[48px] mt-[110px] text-[15px] font-[500] text-[#18470D] border-[1px] border-[#CCCCCC] rounded-[50px] flex justify-center items-center mx-auto">
+          Manage Milestones
+        </button>
       </div>
     </div>
   );
