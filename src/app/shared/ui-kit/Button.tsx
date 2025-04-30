@@ -1,16 +1,16 @@
 interface ButtonProps {
 	type: string;
-	text: string;
+	action: string;
 	handleButton: (action: string) => void;
 }
 const Button: React.FC<ButtonProps> = ({
 	type = "active",
-	text = "Next",
+	action = "Next",
 	handleButton,
 }) => {
 	return (
 		<button
-			onClick={() => handleButton(text)}
+			onClick={() => handleButton(action)}
 			className={`w-full h-full flex items-center justify-center ${type === "transparent" ? "xl:px-[41px] px-[25px]":"xl:px-[25px] px-[20px]"}  md:text-[16px] text-[14px] rounded-full font-medium transition-all duration-300
         ${
 					type === "active"
@@ -20,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({
 						: "bg-[#E2E2E2] text-[#5B5B5B]"
 				}
       `}>
-			{text}
+			{action}
 		</button>
 	);
 };

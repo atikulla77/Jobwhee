@@ -1,6 +1,9 @@
-"use client"; // Required for client-side features like useRouter in App Router
+"use client";
 
 import { useRouter } from "next/navigation";
+import { CloseIcon } from "../../../../../public/icons/talent-client/CloseIcon";
+import { RefundIcon } from "../../../../../public/icons/RefundIcon";
+import { DisputeIcon } from "../../../../../public/icons/talent-client/DisputeIcon";
 
 interface ContractActionsDropDownProps {
 	id: string;
@@ -36,8 +39,7 @@ const ContractActionsDropDown: React.FC<ContractActionsDropDownProps> = ({
 
 	const handleOptionClick = (option: string) => {
 		setDropdownOpen(false);
-		const route = getRouteForOption(option);
-		router.push(route);
+		alert(option);
 	};
 
 	return (
@@ -55,7 +57,21 @@ const ContractActionsDropDown: React.FC<ContractActionsDropDownProps> = ({
 								<button
 									className="w-full cursor-pointer hover:bg-[#c8c8c842] transition-all text-left px-4 sm:py-[10px] py-[6px] sm:text-[16px] text-[14px] font-[500] text-[#545454] rounded-md"
 									onClick={() => handleOptionClick(option)}>
-									{option}
+									{option === "Request a Refund" ? (
+										<div className="flex gap-4">
+											<RefundIcon /> {option}
+										</div>
+									) : option === "End Contract" ? (
+										<div className="flex gap-4">
+											<CloseIcon /> {option}
+										</div>
+									) : option === "Open a Dispute" ? (
+										<div className="flex gap-4">
+											<DisputeIcon /> {option}
+										</div>
+									) : (
+										option
+									)}
 								</button>
 							</li>
 						))}

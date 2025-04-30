@@ -106,7 +106,7 @@ const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
 						<div className="md:w-fit w-[231px] xl:h-[48px] h-[40px]">
 							<Button
 								handleButton={handleButton}
-								text={contract.primaryAction}
+								action={contract.primaryAction}
 								type={
 									contract.primaryAction === "Submit work for payment"
 										? "active"

@@ -1,4 +1,3 @@
-import ContractActionMenu from "@/app/shared/widgets/ContractActionMenu/ContractActionMenu";
 import ContractDropdownMenu from "@/app/shared/widgets/ContractDropdownMenu/ContractDropdownMenu";
 
 const ContractHeader = ({ contract }: any) => {
