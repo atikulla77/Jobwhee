@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import ContractCard from "../../shared/widgets/ContractCard/ContractCard";
-import { Search } from "@/app/shared/ui-kit/Search";
 import { mockContracts } from "./data/mockContracts";
+import { Search } from "@/shared/ui-kit/Search";
+import ContractCard from "@/shared/widgets/ContractCard/ContractCard";
 
 const Page = () => {
 	const [search, setSearch] = useState("");

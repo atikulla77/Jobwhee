@@ -1,4 +1,4 @@
-import ContractDropdownMenu from "@/app/shared/widgets/ContractDropdownMenu/ContractDropdownMenu";
+import ContractDropdownMenu from "@/shared/widgets/ContractDropdownMenu/ContractDropdownMenu";
 
 const ContractHeader = ({ contract }: any) => {
 	return (
@@ -6,7 +6,9 @@ const ContractHeader = ({ contract }: any) => {
 			<h1 className="2xl:w-fit xl:w-[744px] md:w-[521px] w-[243px] xl:text-[40px] md:text-[28px] text-[20px] font-medium">
 				{contract.title}
 			</h1>
-			<ContractDropdownMenu contract={contract} />
+				<div className="md:mr-0 mr-[-9px] md:mb-0 mb-[20px]">
+				<ContractDropdownMenu contract={contract} />
+				</div>
 		</div>
 	);
 };
