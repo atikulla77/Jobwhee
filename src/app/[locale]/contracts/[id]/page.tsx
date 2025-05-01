@@ -13,10 +13,10 @@ const page = () => {
 
 	return (
 		<div className="2xl:w-[1430px] xl:w-[1200px] md:w-[780px] w-[335px] mx-auto [@media(min-width:835px)]:px-0 md:px-[10px] px-0">
-			<div className="2xl:mb-[30px] mb-[20px] mt-8">
+			<div className={`${isCompleted === "completed"? "2xl:mb-[30px] xl:mb-[20px] md:mb-[10px] mb-[20px]":"2xl:mb-[30px] mb-[20px]"} mt-8`}>
 				<ContractHeader contract={mockContractDetail} />
 			</div>
-			<div className="2xl:my-[30px] mb-[20px] ">
+			<div className={`${isCompleted === "completed"? "2xl:mb-[30px] xl:mb-[20px] md:mb-[10px] mb-[20px]":"2xl:mb-[30px] mb-[20px]"}`}>
 				<ContractTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 			</div>
 			{/*  Here will be logical part for contract is completed and it come from database you know, for checking i just set overview but here will conditional like contract completed*/}

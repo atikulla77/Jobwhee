@@ -14,7 +14,7 @@ const ContractCompletedTimeline = ({ contract }: any) => {
           <h1 className="md:text-[30px] text-[28px] font-medium pb-5 text-[#18470D]">
             After work completion
           </h1>
-          <div className="xl:h-[326px] space-y-4 xl:p-[28px] md:p-[20px] p-[13px] rounded-2xl border-[1.5px] border-[#CBEC5E] ">
+          <div className="xl:h-[326px] space-y-4 xl:px-[28px] md:px-[20px] px-[13px] xl:py-[28px] md:py-[15px] py-[13px] rounded-2xl border-[1.5px] border-[#CBEC5E] ">
             <div className="border-b border-[#AEB3BC] 2xl:pb-[5px] pb-[6px] relative">
               <p className="text-[#8A8A8A]">Details</p>
               <div className="w-[94px] h-[5px] absolute bottom-0 left-0 rounded-2xl bg-[#CBEC5E] xl:mb-[-2.5px] mb-[-3px]"></div>
