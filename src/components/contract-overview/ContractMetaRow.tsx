@@ -30,14 +30,12 @@ const ContractMetaRow = ({ contract }: any) => {
 						<p className="text-[16px] font-normal md:text-center">€ 500</p>
 					</div>
 				)}
-				<div className="xl:block hidden   border-l 2xl:pl-[70px] pl-[30px] border-[#CBEC5E]">
-					<div>
+				<div className="xl:block hidden  space-y-[14px]  border-l 2xl:pl-[70px] pl-[30px] border-[#CBEC5E]">
 						<h1 className="">Total Spend</h1>
 						<p className="text-[16px] font-normal md:text-center">
 							{" "}
 							€ {contract?.totalSpend}
 						</p>
-					</div>
 				</div>
 			</div>
 			<div className="xl:hidden  flex flex-col  md:items-center xl:gap-[12px] gap-[14px] md:pl-3 md:pt-0 w-full  border-t border-[#CBEC5E]">
