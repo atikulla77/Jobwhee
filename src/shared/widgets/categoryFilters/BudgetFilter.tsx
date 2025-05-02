@@ -1,7 +1,7 @@
 "use client";
 
 import { Dispatch, SetStateAction, useState } from "react";
-import { GreenCheckIcon } from "../../../public/icons/GreenCheck";
+import { GreenCheckIcon } from "../../../../public/icons/GreenCheck";
 import { CheckboxIcon } from "@/components/UserHeader/Checkbox";
 
 interface BudgetFilterProps {

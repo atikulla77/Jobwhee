@@ -1,14 +1,14 @@
 import Link from "next/link";
-import { BlueBriefcase } from "../../../public/icons/BlueBriefcase";
-import { GreenBriefcase } from "../../../public/icons/GreenBriefcase";
-import { OliveBriefcase } from "../../../public/icons/OliveBriefcase";
-import { PinkBriefcase } from "../../../public/icons/PinkBriefcase";
-import { VioletBriefcase } from "../../../public/icons/VioletBriefcase";
-import { BlackCloseIcon } from "../../../public/icons/BlackCloseIcon";
-import { MilestoneIcon } from "../../../public/icons/MilestoneIcon";
-import { ApplyBriefcase } from "../../../public/icons/ApplyBriefcase";
-import { ContractAcceptIcon } from "../../../public/icons/ContractAcceptIcon";
-import { ContractRejectIcon } from "../../../public/icons/ContractRejectIcon";
+import { BlueBriefcase } from "../../../../public/icons/BlueBriefcase";
+import { GreenBriefcase } from "../../../../public/icons/GreenBriefcase";
+import { OliveBriefcase } from "../../../../public/icons/OliveBriefcase";
+import { PinkBriefcase } from "../../../../public/icons/PinkBriefcase";
+import { VioletBriefcase } from "../../../../public/icons/VioletBriefcase";
+import { BlackCloseIcon } from "../../../../public/icons/BlackCloseIcon";
+import { MilestoneIcon } from "../../../../public/icons/MilestoneIcon";
+import { ApplyBriefcase } from "../../../../public/icons/ApplyBriefcase";
+import { ContractAcceptIcon } from "../../../../public/icons/ContractAcceptIcon";
+import { ContractRejectIcon } from "../../../../public/icons/ContractRejectIcon";
 
 interface NotificationListProps {
 	notifies: {

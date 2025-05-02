@@ -1,8 +1,8 @@
 "use client";
 
 import { Dispatch, SetStateAction, useState } from "react";
-import { GreenCheckIcon } from "../../../public/icons/GreenCheck";
-import { CheckIcon } from "../../../public/icons/CheckIcon";
+import { GreenCheckIcon } from "../../../../public/icons/GreenCheck";
+import { CheckIcon } from "../../../../public/icons/CheckIcon";
 import { CheckboxIcon } from "@/components/UserHeader/Checkbox";
 
 interface SubCategoryFilterProps {

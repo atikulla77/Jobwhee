@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { GreenCheckIcon } from "../../../public/icons/GreenCheck";
-import { CheckboxIcon } from "@/components/UserHeader/Checkbox";
+import { GreenCheckIcon } from "../../../../public/icons/GreenCheck";
+import CheckBox from "@/shared/ui-kit/CheckBox";
 
 interface ExperienceFilterProps {
 	selectedExperience: string[];
@@ -53,7 +53,7 @@ export const ExperienceFilter: React.FC<ExperienceFilterProps> = ({
 							className={`cursor-pointer hover:bg-gray-100 p-2 rounded flex text-[18px] items-center gap-2 ${
 								selectedExperience.includes(level) ? "bg-gray-200" : ""
 							}`}>
-							<CheckboxIcon isActive={selectedExperience.includes(level)} />
+							<CheckBox isActive={selectedExperience.includes(level)} />
 							{level}
 						</li>
 					))}

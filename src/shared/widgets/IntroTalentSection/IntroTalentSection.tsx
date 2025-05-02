@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { VideoPlayer } from "../../../components/Talent/TalentProfileMainPage/IntroSection/TalentVideoPlayer";
+import { VideoPlayer } from "../../../../components/Talent/TalentProfileMainPage/IntroSection/TalentVideoPlayer";
 import IntroProfileModal from "@/components/Talent/TalentProfileMainPage/IntroSection/IntroModal";
-import { EditIcon } from "../../../public/icons/talent-client/editIcon";
-import LanguageProfileModal from "../../../components/Talent/TalentProfileMainPage/IntroSection/LanguageProfileModal";
-import VideoProfileModal from "../../../components/Talent/TalentProfileMainPage/IntroSection/VideoModal";
+import { EditIcon } from "../../../../public/icons/talent-client/editIcon";
+import LanguageProfileModal from "../../../../components/Talent/TalentProfileMainPage/IntroSection/LanguageProfileModal";
+import VideoProfileModal from "@/components/Talent/TalentProfileMainPage/IntroSection/VideoModal";
 
 interface IntroTalentSectionProps {
 	user: any;

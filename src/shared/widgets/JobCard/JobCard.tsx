@@ -1,11 +1,10 @@
-import { JobCardLG } from "../../../public/icons/JobCardLG";
-import { JobCardSM } from "../../../public/icons/JobCardSM";
-import { JobCardMobile } from "../../../public/icons/JobCardMobile";
-import { GreenFolderIcon } from "../../../public/icons/GreenFolderIcon";
-import { ThreeDotIcon } from "../../../public/icons/ThreeDotIcon";
-import { OpenedLetter } from "../../../public/icons/OpenedLetter";
-import { ProposalsIcon } from "../../../public/icons/ProposalsIcon";
-import { MessagesIcon } from "../../../public/icons/MessagesIcon";
+import { JobCardLG } from "../../../../public/icons/JobCardLG";
+import { JobCardSM } from "../../../../public/icons/JobCardSM";
+import { JobCardMobile } from "../../../../public/icons/JobCardMobile";
+import { GreenFolderIcon } from "../../../../public/icons/GreenFolderIcon";
+import { OpenedLetter } from "../../../../public/icons/OpenedLetter";
+import { ProposalsIcon } from "../../../../public/icons/ProposalsIcon";
+import { MessagesIcon } from "../../../../public/icons/MessagesIcon";
 import React from "react";
 import { timeAgo } from "@/utils/hooks/timeFormatter";
 import { ClientJobsResult } from "@/lib/api/clientJobsApi/clientJobsApi";

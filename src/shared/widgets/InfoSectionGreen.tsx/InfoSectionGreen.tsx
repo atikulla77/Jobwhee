@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { EditIcon } from "../../../public/icons/talent-client/editIcon";
+import { EditIcon } from "../../../../public/icons/talent-client/editIcon";
 
 interface InfoSectionGreenProps {
 	children: ReactNode;

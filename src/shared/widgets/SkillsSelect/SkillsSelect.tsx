@@ -5,7 +5,7 @@ import SkillSearchDropdown from "@/shared/widgets/SkillsSelect/SkillSearchDropdo
 import { getAllSkills } from "@/lib/api/allSkillsApi/allSkillsApi";
 import useSWR from "swr";
 import { usePathname } from "next/navigation";
-import { Xicon } from "../../../public/icons/talent-client/Xicon";
+import { Xicon } from "../../../../public/icons/talent-client/Xicon";
 import { useAllSkills } from "@/components/Talent/TalentProfileMainPage/Skills/useAllSkills";
 
 interface SkillsSelectProps {

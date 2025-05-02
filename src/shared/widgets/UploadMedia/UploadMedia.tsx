@@ -1,6 +1,6 @@
 "use client";
 
-import { PhotoPlaceholderIcon } from "../../../public/icons/PhotoPlaceholderIcon";
+import { PhotoPlaceholderIcon } from "../../../../public/icons/PhotoPlaceholderIcon";
 import React, { useState, useRef } from "react";
 
 interface UploadMediaProps {

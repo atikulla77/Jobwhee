@@ -1,6 +1,5 @@
 import Button from "@/shared/ui-kit/Button";
 import { DropDownArrowIcon } from "../../../public/icons/DropDownArrowIcon";
-import { RefundIcon } from "../../../public/icons/RefundIcon";
 import { ReloadIcon } from "../../../public/icons/ReloadIcon";
 
 const FileUploadTimeline = () => {

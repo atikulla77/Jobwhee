@@ -1,9 +1,9 @@
 "use client";
 
 import { Dispatch, SetStateAction, useState } from "react";
-import { GreenCheckIcon } from "../../../public/icons/GreenCheck";
-import { CheckIcon } from "../../../public/icons/CheckIcon";
-import { CheckboxIcon } from "@/components/UserHeader/Checkbox";
+import { GreenCheckIcon } from "../../../../public/icons/GreenCheck";
+import { CheckIcon } from "../../../../public/icons/CheckIcon";
+import CheckBox from "@/shared/ui-kit/CheckBox";
 
 interface CategoryFilterProps {
 	setSelectedCategory: Dispatch<SetStateAction<string[]>>;
@@ -69,11 +69,7 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
 								className={`cursor-pointer hover:bg-gray-100 p-2 rounded flex items-center gap-[10px] ${
 									selectedCategory.includes(category) ? "bg-gray-200" : ""
 								}`}>
-								{
-									<CheckboxIcon
-										isActive={selectedCategory.includes(category)}
-									/>
-								}
+								{<CheckBox isActive={selectedCategory.includes(category)} />}
 								{category}
 							</li>
 						))}

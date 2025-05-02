@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
-import { FullFileIcon } from "../../../public/icons/FullFileIcon";
-import { StarIcon } from "../../../public/icons/talent-client/StarIcon";
-import { LocationIcon } from "../../../public/icons/LocationIcon";
-import { ShieldIcon } from "../../../public/icons/Shield";
-import { GreenHeartIcon } from "../../../public/icons/GreenHeartIcon";
-import { NewStarIcon } from "../../../public/icons/NewStar";
+import { FullFileIcon } from "../../../../public/icons/FullFileIcon";
+import { StarIcon } from "../../../../public/icons/talent-client/StarIcon";
+import { LocationIcon } from "../../../../public/icons/LocationIcon";
+import { ShieldIcon } from "../../../../public/icons/Shield";
+import { GreenHeartIcon } from "../../../../public/icons/GreenHeartIcon";
+import { NewStarIcon } from "../../../../public/icons/NewStar";
 import { Tag } from "@/shared/ui-kit/Tags";
 
 interface JobCardProps {

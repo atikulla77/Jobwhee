@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { SecuredButton } from "../../../public/icons/SecuredButton";
-import { HeartIcon } from "../../../public/icons/HeartIcon copy";
-import { LetterIcon } from "../../../public/icons/LetterIcon";
+import { SecuredButton } from "../../../../public/icons/SecuredButton";
+import { HeartIcon } from "../../../../public/icons/HeartIcon copy";
+import { LetterIcon } from "../../../../public/icons/LetterIcon";
 import Link from "next/link";
 
 interface TalentProfileCardProps {

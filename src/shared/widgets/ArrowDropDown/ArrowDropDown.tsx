@@ -1,4 +1,4 @@
-import { BlackRowIcon } from "../../../public/icons/talent-client/BlackRowIcon";
+import { BlackRowIcon } from "../../../../public/icons/talent-client/BlackRowIcon";
 interface ArrowDropDown {
 	title: string;
 	hasBg?: boolean;

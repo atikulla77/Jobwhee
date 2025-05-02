@@ -9,7 +9,7 @@ import ContractMetaRow from "@/components/contract-overview/ContractMetaRow";
 
 const page = () => {
 	const [activeTab, setActiveTab] = useState<string>("Overview");
-	const [isCompleted, setIsCompleted] = useState<string>("completed");
+	const [isCompleted, setIsCompleted] = useState<string>("ompleted");
 
 	return (
 		<div className="2xl:w-[1430px] xl:w-[1200px] md:w-[780px] w-[335px] mx-auto [@media(min-width:835px)]:px-0 md:px-[10px] px-0">

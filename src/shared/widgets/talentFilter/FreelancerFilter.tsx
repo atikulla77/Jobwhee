@@ -6,7 +6,7 @@ import { ExperienceFilter } from "@/shared/widgets/categoryFilters/ExperienceFil
 import { BudgetFilter } from "@/shared/widgets/categoryFilters/BudgetFilter";
 import { ProposalsFilter } from "@/shared/widgets/categoryFilters/PropoSalsFilter";
 import { ScopeFilter } from "@/shared/widgets/categoryFilters/ScopeFilter";
-import { Xicon } from "../../../public/icons/Xicon";
+import { Xicon } from "../../../../public/icons/Xicon";
 import { Dispatch, SetStateAction, useState } from "react";
 
 type FreeLancerFilterProps = {

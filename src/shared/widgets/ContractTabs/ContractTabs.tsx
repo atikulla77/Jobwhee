@@ -1,4 +1,5 @@
-import { Tabs } from "../../ui-kit/Tabs";
+import { Tabs } from "@/shared/ui-kit/Tabs";
+
 interface TabState {
 	activeTab: string;
 	setActiveTab: React.Dispatch<React.SetStateAction<string>>;
