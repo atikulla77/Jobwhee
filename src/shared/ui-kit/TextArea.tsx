@@ -1,9 +1,19 @@
-export const TextArea = () => {
+import { FC } from "react";
+
+interface TextAreaProps {
+  placeholder: string;
+  width: string;
+  height: string;
+  responsiveWidthHeight: string;
+}
+
+export const TextArea: FC<TextAreaProps> = ({placeholder = "Lorem impsum...", width = "350px", height = "146px", responsiveWidthHeight}) => {
   return (
     <div>
       <textarea
-        placeholder="Lorem impsum..."
-        className=" min-w-[350px] min-h-[146px] border text-base text-[#8B939F] border-[#AEB3BC] rounded-[12px] px-[10px] py-[10px]"
+        placeholder={placeholder}
+        style={{width: width, height: height}}
+        className={`${responsiveWidthHeight} min-w-[335px] min-h-[146px] border text-base placeholder:text-[#8B939F] text-[#8B939F] border-[#AEB3BC] rounded-[12px] px-[10px] py-[10px]`}
       />
     </div>
   );

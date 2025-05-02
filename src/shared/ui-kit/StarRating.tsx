@@ -4,9 +4,12 @@ import { FC } from "react";
 
 interface RatingProps {
   rating: number;
+  width: number;
+  height: number;
+  responsiveWidthHeight: string;
 }
 
-const StarRating: FC<RatingProps> = ({ rating }) => {
+const StarRating: FC<RatingProps> = ({ rating, width, height,responsiveWidthHeight }) => {
   const totalStars = 5;
   const stars = [];
 
@@ -19,9 +22,10 @@ const StarRating: FC<RatingProps> = ({ rating }) => {
           key={i}
           src="/images/icon-images/starIcon.png"
           alt="Full Star"
-          width={14}
-          height={14}
-        />,
+          width={width}
+          height={height}
+          className={responsiveWidthHeight}
+        />
       );
     } else if (roundedRating >= i - 0.5) {
       stars.push(
@@ -29,9 +33,10 @@ const StarRating: FC<RatingProps> = ({ rating }) => {
           key={i}
           src="/images/icon-images/halfStarIcon.png"
           alt="Half Star"
-          width={14}
-          height={14}
-        />,
+          width={width}
+          height={height}
+          className={responsiveWidthHeight}
+        />
       );
     } else {
       stars.push(
@@ -39,14 +44,15 @@ const StarRating: FC<RatingProps> = ({ rating }) => {
           key={i}
           src="/images/icon-images/emptyStarIcon.png"
           alt="Empty Star"
-          width={14}
-          height={14}
-        />,
+          width={width}
+          height={height}
+          className={responsiveWidthHeight}
+        />
       );
     }
   }
 
-  return <div className="flex items-center justify-center gap-1">{stars}</div>;
+  return <div className="flex items-center md:gap-[4px] gap-[2px]">{stars}</div>;
 };
 
 export default StarRating;
