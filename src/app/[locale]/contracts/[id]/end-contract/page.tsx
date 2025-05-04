@@ -17,20 +17,20 @@ const page = () => {
     <div className="2xl:w-[1430px] xl:w-[1200px] md:w-[780px] w-[335px] flex flex-wrap justify-between mx-auto pt-[52px] pb-[50px]">
       {/* Modal */}
       <div className="">
-        <Modal
+        {/* <Modal
           children={<Submitthepayment />}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           width={"678px"}
           height={"h-[687px]"}
-        />
+        /> */}
         {/* <Modal
           children={<AddNewMilestone />}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           width={"860px"}
           height={"xl:h-[558px] md:h-[517px] h-[524px]"}
-        />
+        /> */}
         <Modal
           children={<ManageMilestones />}
           isOpen={isModalOpen}
@@ -38,7 +38,7 @@ const page = () => {
           width={"860px"}
           height={"xl:h-[768px] md:h-[590px] h-[665px] "}
         />
-        <Modal
+        {/* <Modal
           children={<ConfirmationEndOfContract />}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
@@ -151,16 +151,7 @@ const Submitthepayment = () => {
     alert(action);
   };
   return (
-    <div className="xl:w-[678px] md:w-[556px] w-[335px] h-[687px] md:px-[38px] px-[24px] xl:py-[28px] py-[24px] bg-white rounded-[30px] relative">
-      <div className="absolute xl:right-[38px] right-[24px] xl:top-[38px] top-[27px]">
-        <Image
-          src={"/images/icon-images/xicon.png"}
-          width={24}
-          height={24}
-          alt=""
-          className="rounded-[50%]"
-        />
-      </div>
+    <>
       <h1 className="xl:text-[30px] text-[20px] text-[#18470D] font-[500] mb-[30px]">
         Submit the payment
       </h1>
@@ -227,7 +218,7 @@ const Submitthepayment = () => {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -238,16 +229,7 @@ const AddNewMilestone = () => {
   const [date, setDate] = useState<Date | null>(null);
 
   return (
-    <div className="xl:w-[860px] md:w-[556px] w-[335px] xl:h-[558px] md:h-[517px] h-[524px] md:px-[38px] px-[24px] 2xl:py-[24px] md:py-[38px] py-[24px] bg-white rounded-[30px] relative">
-      <div className="absolute md:right-[38px] right-[24px] 2xl:top-[24px] xl:top-[49px] md:top-[41px] top-[27px]">
-        <Image
-          src={"/images/icon-images/xicon.png"}
-          width={24}
-          height={24}
-          alt=""
-          className="rounded-[50%]"
-        />
-      </div>
+    <>
       <h1 className="xl:text-[30px] text-[20px] text-[#18470D] font-[500] 2xl:mb-[53px] xl:mb-[37px] md:mb-[40px] mb-[30px]">
         Add new milestone
       </h1>
@@ -305,7 +287,7 @@ const AddNewMilestone = () => {
           <Button handleButton={handleButton} action={"Save"} type={""} />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -316,21 +298,12 @@ const ManageMilestones = () => {
   const [date, setDate] = useState<Date | null>(null);
 
   return (
-    <div className="xl:w-[860px] md:w-[556px] w-[335px] xl:h-[768px] md:h-[590px] h-[665px] xl:px-[28px] px-[14px] 2xl:py-[38px] xl:py-[38px] py-[24px] bg-white rounded-[30px] relative">
-      <div className="absolute xl:right-[36px] md:right-[38px] right-[24px] 2xl:top-[38px] xl:top-[49px] top-[27px]">
-        <Image
-          src={"/images/icon-images/xicon.png"}
-          width={24}
-          height={24}
-          alt=""
-          className="rounded-[50%]"
-        />
-      </div>
+    <>
       <h1 className="xl:text-[30px] text-[20px] text-[#18470D] font-[500] px-[10px] xl:mb-[21px] md:mb-[27px] mb-[19px]">
         Manage Milestones
       </h1>
 
-      <div className="xl:h-[527px] md:h-[392px] h-[440px] px-[10px] pt-[10px] xl:mr-[5px] md:mr-[20px] mr-[10px] relative overflow-y-auto">
+      <div className="xl:h-[527px] md:h-[392px] h-[440px] px-[10px] pt-[10px]  relative overflow-y-auto">
         <div className="xl:w-[762px] md:w-[470px] w-[263px] xl:h-[137px] md:h-[110px] h-[132px] min-h-[110px] xl:pl-[38px] md:pl-[24px] pl-[14px] md:pr-[25px] pr-[14px] md:py-[18px] py-[14px] flex md:flex-row flex-col md:justify-between justify-start items-center border-[1px] border-[#B9B9B9] rounded-[12px] shadow-[0px_5px_15px_0px_#b9b9b959] mb-[10px]">
           <div className="md:w-fit w-full flex flex-row justify-start items-center font-[500] xl:gap-[31px] gap-[16px]">
             <h3 className="xl:text-[16px] text-[14px] text-[#000000]">1</h3>
@@ -434,7 +407,7 @@ const ManageMilestones = () => {
           <Button handleButton={handleButton} action={"Save"} type={"active"} />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -444,17 +417,7 @@ const ConfirmationEndOfContract = () => {
   };
 
   return (
-    <div className="xl:w-[860px] md:w-[556px] w-[335px] xl:h-[558px] md:h-[450px] h-[462px] md:py-[38px] py-[24px] px-[24px] bg-white rounded-[30px] relative text-center">
-      <div className="absolute md:right-[38px] right-[24px] 2xl:top-[24px] xl:top-[49px]  top-[27px]">
-        <Image
-          src={"/images/icon-images/xicon.png"}
-          width={24}
-          height={24}
-          alt=""
-          className="rounded-[50%]"
-        />
-      </div>
-
+    <>
       <div className="w-full flex justify-center mt-[27px] md:mb-[29px] mb-[18px]">
         <Image
           src={"/images/confirmationendofcontract.png"}
@@ -486,6 +449,6 @@ const ConfirmationEndOfContract = () => {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 };

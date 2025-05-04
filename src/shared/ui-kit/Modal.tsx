@@ -29,7 +29,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, width, height 
       } w-full absolute left-0 top-0 h-[100vh] z-50 justify-center items-center bg-[#00000069]`}
     >
       <div
-        className={`xl:w-[${width}] md:w-[556px] w-[335px] ${height} md:px-[38px] px-[24px] bg-white rounded-[30px] relative`}
+        className={`xl:w-[${width}] md:w-[556px] w-[335px] ${height} md:px-[38px] px-[24px] xl:py-[28px] py-[24px] bg-white rounded-[30px] relative`}
       >
         <div onClick={onClose} className="absolute xl:right-[38px] right-[24px] xl:top-[38px] top-[27px] cursor-pointer z-50">
           <Image
