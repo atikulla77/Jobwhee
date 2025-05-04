@@ -1,5 +1,5 @@
-import Image from "next/image";
 import React, { useEffect } from "react";
+import { CloseIcon } from "../../../public/icons/CloseIcon";
 
 type ModalProps = {
   isOpen: boolean;
@@ -32,13 +32,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, width, height 
         className={`xl:w-[${width}] md:w-[556px] w-[335px] ${height} md:px-[38px] px-[24px] xl:py-[28px] py-[24px] bg-white rounded-[30px] relative`}
       >
         <div onClick={onClose} className="absolute xl:right-[38px] right-[24px] xl:top-[38px] top-[27px] cursor-pointer z-50">
-          <Image
-            src={"/images/icon-images/xicon.png"}
-            width={24}
-            height={24}
-            alt=""
-            className="rounded-[50%]"
-          />
+          <CloseIcon/>
         </div>
         {children}
       </div>
