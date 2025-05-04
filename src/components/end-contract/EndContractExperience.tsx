@@ -4,26 +4,37 @@ import { DropDownArrowIcon } from "../../../public/icons/DropDownArrowIcon";
 import { TextArea } from "@/shared/ui-kit/TextArea";
 import Button from "@/shared/ui-kit/Button";
 import { useState } from "react";
+import Dropdown from "@/shared/ui-kit/Dropdown";
 
 const EndContractExperience = () => {
   const handleButton = (action: string) => {
     alert(action);
   };
 
-  const [dropDownList, setDropDownList] = useState(false);
   const dropDownListData = [
-    { id: 1, title: "The job has been completed successfully" },
-    { id: 2, title: "The talent wasn’t the right fit" },
+    { id: 1, title: "The job has been completed successfully", checked: false },
+    { id: 2, title: "The talent wasn’t the right fit", checked: false },
     {
       id: 3,
       title: "The talent didn’t meet the expected quality or timelines",
+      checked: false,
     },
-    { id: 4, title: "We changed direction or paused the project" },
-    { id: 5, title: "We had communication issues" },
-    { id: 6, title: "Budget issues — we had to stop" },
-    { id: 7, title: "We found someone better suited for the job" },
-    { id: 8, title: "The talent stopped responding" },
+    {
+      id: 4,
+      title: "We changed direction or paused the project",
+      checked: false,
+    },
+    { id: 5, title: "We had communication issues", checked: false },
+    { id: 6, title: "Budget issues — we had to stop", checked: false },
+    {
+      id: 7,
+      title: "We found someone better suited for the job",
+      checked: false,
+    },
+    { id: 8, title: "The talent stopped responding", checked: false },
   ];
+  const [dropDownData, setDropDrownData] = useState(dropDownListData);
+  const [selectedItem, setSelectedItem] = useState("");
 
   return (
     <div className="xl:w-fit w-full">
@@ -35,67 +46,82 @@ const EndContractExperience = () => {
         when the 14-day feedback period ends. Your input helps others make
         better choices.
       </p>
-      <h1 className="md:text-[18px] text-[14px] text-[#545454] pb-[8px]">
-        Why do you want to end the contract?
-      </h1>
-
-      <div
-        className={`xl:w-[611px] w-full h-[42px] flex justify-between items-center border-[1px] ${
-          dropDownList
-            ? "border-[#18470D] shadow-[0px_0px_2px_0px_#18470D]"
-            : "border-[#AEB3BC]"
-        } rounded-[12px] px-[7px] xl:mb-[45px] md:mb-[20px] mb-[25px] cursor-pointer relative`}
-        onClick={() => setDropDownList(!dropDownList)}
-      >
-        <p className="md:text-[16px] text-[14px] text-[#8B939F]">Select the reason</p>
-        <DropDownArrowIcon />
-        {/* Drop Down List */}
-        <div
-          className={`${
-            dropDownList ? "" : "hidden"
-          } w-full p-[8px] rounded-[12px] bg-white shadow-[0px_0px_5px_0px_#00000029] cursor-default absolute top-[53px] left-0`}
-        >
-          {dropDownListData.map((key) => {
-            return (
-              <div className="w-full" key={key.id}>
-                <p className="w-full text-[#565E69] px-[8px] py-[2px] rounded-[8px] hover:bg-[#F5FFD3] transition-all duration-300 cursor-pointer">
-                  {key.title}
-                </p>
-                <div
-                  className={`${
-                    key.id === dropDownListData.length ? "hidden" : ""
-                  } w-full h-[1px] bg-[#EAEAEA] my-[10px]`}
-                ></div>
-              </div>
-            );
-          })}
-        </div>
+      <div className="xl:mb-[45px] md:mb-[20px] mb-[25px]">
+        <Dropdown
+          list={dropDownData}
+          setDropDownData={setDropDrownData}
+          selectedItem={selectedItem}
+          setSelectedItem={setSelectedItem}
+          label="Why do you want to end the contract?"
+          placeholder="Select the reason"
+          type="select"
+        />
       </div>
 
       <div className="flex flex-col md:gap-[23px] gap-[28px] md:mb-[26px] mb-[32px]">
         <div className="w-full flex items-center gap-[10px]">
-          <StarRating rating={0} width={23} height={23} responsiveWidthHeight="md:w-[23px] !w-[25px]" />
+          <StarRating
+            rating={0}
+            width={23}
+            height={23}
+            responsiveWidthHeight="md:w-[23px] !w-[25px]"
+          />
           <h3 className="md:text-[20px] text-[14px] text-[#545454]">Skills</h3>
         </div>
         <div className="w-full flex items-center gap-[10px]">
-          <StarRating rating={0} width={23} height={23} responsiveWidthHeight="md:w-[23px] !w-[25px]" />
-          <h3 className="md:text-[20px] text-[14px] text-[#545454]">Communication</h3>
+          <StarRating
+            rating={0}
+            width={23}
+            height={23}
+            responsiveWidthHeight="md:w-[23px] !w-[25px]"
+          />
+          <h3 className="md:text-[20px] text-[14px] text-[#545454]">
+            Communication
+          </h3>
         </div>
         <div className="w-full flex items-center gap-[10px]">
-          <StarRating rating={0} width={23} height={23} responsiveWidthHeight="md:w-[23px] !w-[25px]" />
-          <h3 className="md:text-[20px] text-[14px] text-[#545454]">Availability</h3>
+          <StarRating
+            rating={0}
+            width={23}
+            height={23}
+            responsiveWidthHeight="md:w-[23px] !w-[25px]"
+          />
+          <h3 className="md:text-[20px] text-[14px] text-[#545454]">
+            Availability
+          </h3>
         </div>
         <div className="w-full flex items-center gap-[10px]">
-          <StarRating rating={0} width={23} height={23} responsiveWidthHeight="md:w-[23px] !w-[25px]" />
-          <h3 className="md:text-[20px] text-[14px] text-[#545454]">Quality of Work</h3>
+          <StarRating
+            rating={0}
+            width={23}
+            height={23}
+            responsiveWidthHeight="md:w-[23px] !w-[25px]"
+          />
+          <h3 className="md:text-[20px] text-[14px] text-[#545454]">
+            Quality of Work
+          </h3>
         </div>
         <div className="w-full flex items-center gap-[10px]">
-          <StarRating rating={0} width={23} height={23} responsiveWidthHeight="md:w-[23px] !w-[25px]" />
-          <h3 className="md:text-[20px] text-[14px] text-[#545454]">Timeliness</h3>
+          <StarRating
+            rating={0}
+            width={23}
+            height={23}
+            responsiveWidthHeight="md:w-[23px] !w-[25px]"
+          />
+          <h3 className="md:text-[20px] text-[14px] text-[#545454]">
+            Timeliness
+          </h3>
         </div>
         <div className="w-full flex items-center gap-[10px]">
-          <StarRating rating={0} width={23} height={23} responsiveWidthHeight="md:w-[23px] !w-[25px]" />
-          <h3 className="md:text-[20px] text-[14px] text-[#545454]">Cooperation</h3>
+          <StarRating
+            rating={0}
+            width={23}
+            height={23}
+            responsiveWidthHeight="md:w-[23px] !w-[25px]"
+          />
+          <h3 className="md:text-[20px] text-[14px] text-[#545454]">
+            Cooperation
+          </h3>
         </div>
       </div>
       <h1 className="text-[20px] mb-[24px]">Total score: 0.0</h1>

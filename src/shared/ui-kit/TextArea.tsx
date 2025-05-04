@@ -7,13 +7,13 @@ interface TextAreaProps {
   responsiveWidthHeight: string;
 }
 
-export const TextArea: FC<TextAreaProps> = ({placeholder = "Lorem impsum...", width = "350px", height = "146px", responsiveWidthHeight}) => {
+export const TextArea: FC<TextAreaProps> = ({placeholder = "Lorem impsum...", width = "335px", height = "146px", responsiveWidthHeight}) => {
   return (
     <div>
       <textarea
         placeholder={placeholder}
         style={{width: width, height: height}}
-        className={`${responsiveWidthHeight} min-w-[335px] min-h-[146px] border text-base placeholder:text-[#8B939F] text-[#8B939F] border-[#AEB3BC] rounded-[12px] px-[10px] py-[10px]`}
+        className={`${responsiveWidthHeight} min-h-[146px] border text-base placeholder:text-[#8B939F] text-[#8B939F] border-[#AEB3BC] rounded-[12px] px-[10px] py-[10px]`}
       />
     </div>
   );
