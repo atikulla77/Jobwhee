@@ -57,7 +57,7 @@ const ManageMilestoneModal = ({
 						className="xl:w-[762px]  md:w-[470px] w-[263px] xl:h-[137px] md:h-[110px] h-[132px] min-h-[110px] xl:pl-[38px] md:pl-[24px] pl-[14px] md:pr-[25px] pr-[14px] md:py-[18px] py-[14px] flex md:flex-row flex-col md:justify-between justify-start items-center border-[1px] border-[#B9B9B9] rounded-[12px] shadow-[0px_5px_15px_0px_#b9b9b959] md:mb-[10px] mb-[8px] cursor-move bg-white">
 						<div className="md:w-fit w-full flex flex-row justify-start items-center font-[500] xl:gap-[31px] gap-[16px]">
 							<h3 className="xl:text-[16px] text-[14px] text-[#000000]">
-								{index + 1}
+								{milestone?.id}
 							</h3>
 							<h1 className="xl:text-[18px] text-[16px] text-[#18470D]">
 								{milestone?.title}
