@@ -34,7 +34,7 @@ export const Input: React.FC<InputProps> = ({
     <div style={{ width, height }} className="relative md:text-[16px] text-[14px]">
       {disabled ? (
         <input
-          type={type === "password" && !isPasswordVisible ? "password" : "text"}
+          type={type === "password" && !isPasswordVisible ? "password" : type === "number" ? "number" : "text"}
           style={{ width, height }}
           value={inputValue}
           disabled
@@ -46,7 +46,7 @@ export const Input: React.FC<InputProps> = ({
         />
       ) : inputValue === "" ? (
         <input
-          type={type === "password" && !isPasswordVisible ? "password" : "text"}
+        type={type === "password" && !isPasswordVisible ? "password" : type === "number" ? "number" : "text"}
           style={{ width, height }}
           placeholder={placeholder}
           onChange={(e) => setInputValue(e.target.value)}
@@ -57,7 +57,7 @@ export const Input: React.FC<InputProps> = ({
       ) : (
         // Default Value
         <input
-          type={type === "password" && !isPasswordVisible ? "password" : "text"}
+        type={type === "password" && !isPasswordVisible ? "password" : type === "number" ? "number" : "text"}
           style={{ width, height }}
           value={inputValue}
           placeholder={placeholder}

@@ -8,7 +8,7 @@ import ClickOutside from "../widgets/ClickOutside/ClickOutside";
 type DropdownProps = {
 	list: Array<{ title: string; checked?: boolean; id: number }>; // data with checkboxes
 	setDropDownData?: React.Dispatch<
-		React.SetStateAction<Array<{ title: string; checked: boolean; id: number }>>
+		React.SetStateAction<Array<{ title: string; checked?: boolean; id: number }>>
 	>;
 	label?: string;
 	placeholder?: string;

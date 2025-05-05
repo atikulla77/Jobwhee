@@ -1,12 +1,12 @@
 export const mockContractDetail = {
-	contractId: "xyz123",
+	contractId: "abc123",
 	title: "Weekly House Cleaning Service for a 3-Bedroom Apartment",
 	status: "ongoing",
 	projectPrice: 1500,
 	inEscrow: 500,
 	milestonesPaid: 1,
 	milestonesRemaining: 2,
-	totalSpend: 500,
+	totalSpend: 2000,
 	milestones: [
 		{
 			id: 1,

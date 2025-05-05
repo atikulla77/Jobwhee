@@ -1,58 +1,57 @@
 "use client";
 import Image from "next/image";
 import { FC } from "react";
+import React from "react";
 
 interface RatingProps {
-  rating: number;
-  width: number;
-  height: number;
-  responsiveWidthHeight: string;
+	rating: number;
+	width: number;
+	height: number;
+	responsiveWidthHeight?: string;
+	onChange?: (rating: number) => void; // <-- Optional handler
 }
 
-const StarRating: FC<RatingProps> = ({ rating, width, height,responsiveWidthHeight }) => {
-  const totalStars = 5;
-  const stars = [];
+const StarRating: FC<RatingProps> = ({
+	rating,
+	width,
+	height,
+	responsiveWidthHeight = "",
+	onChange,
+}) => {
+	const totalStars = 5;
 
-  const roundedRating = Math.round(rating * 2) / 2;
+	const handleClick = (index: number) => {
+		if (onChange) {
+			onChange(index);
+		}
+	};
 
-  for (let i = 1; i <= totalStars; i++) {
-    if (roundedRating >= i) {
-      stars.push(
-        <Image
-          key={i}
-          src="/images/icon-images/starIcon.png"
-          alt="Full Star"
-          width={width}
-          height={height}
-          className={responsiveWidthHeight}
-        />
-      );
-    } else if (roundedRating >= i - 0.5) {
-      stars.push(
-        <Image
-          key={i}
-          src="/images/icon-images/halfStarIcon.png"
-          alt="Half Star"
-          width={width}
-          height={height}
-          className={responsiveWidthHeight}
-        />
-      );
-    } else {
-      stars.push(
-        <Image
-          key={i}
-          src="/images/icon-images/emptyStarIcon.png"
-          alt="Empty Star"
-          width={width}
-          height={height}
-          className={responsiveWidthHeight}
-        />
-      );
-    }
-  }
+	const renderStar = (i: number) => {
+		let src = "/images/icon-images/emptyStarIcon.png";
+		if (rating >= i) {
+			src = "/images/icon-images/starIcon.png";
+		} else if (rating >= i - 0.5) {
+			src = "/images/icon-images/halfStarIcon.png";
+		}
 
-  return <div className="flex items-center md:gap-[4px] gap-[2px]">{stars}</div>;
+		return (
+			<Image
+				key={i}
+				src={src}
+				alt={`Star ${i}`}
+				width={width}
+				height={height}
+				onClick={() => handleClick(i)}
+				className={`cursor-pointer ${responsiveWidthHeight}`}
+			/>
+		);
+	};
+
+	return (
+		<div className="flex items-center md:gap-[4px] gap-[2px]">
+			{Array.from({ length: totalStars }, (_, i) => renderStar(i + 1))}
+		</div>
+	);
 };
 
 export default StarRating;
