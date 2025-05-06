@@ -9,6 +9,7 @@ interface RatingProps {
 	height: number;
 	responsiveWidthHeight?: string;
 	onChange?: (rating: number) => void; // <-- Optional handler
+	gap?: string;
 }
 
 const StarRating: FC<RatingProps> = ({
@@ -16,7 +17,7 @@ const StarRating: FC<RatingProps> = ({
 	width,
 	height,
 	responsiveWidthHeight = "",
-	onChange,
+	onChange,gap = "md:gap-[4px] gap-[2px]"
 }) => {
 	const totalStars = 5;
 
@@ -48,7 +49,7 @@ const StarRating: FC<RatingProps> = ({
 	};
 
 	return (
-		<div className="flex items-center md:gap-[4px] gap-[2px]">
+		<div className={`flex items-center ${gap}`}>
 			{Array.from({ length: totalStars }, (_, i) => renderStar(i + 1))}
 		</div>
 	);

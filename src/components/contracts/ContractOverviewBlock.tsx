@@ -5,13 +5,15 @@ import RecentActivity from "./RecentActivity";
 
 const ContractOverviewBlock = () => {
 	return (
-		<div className="flex gap-x-[30px]">
-			<div className="max-w-[1047px] mx-auto space-y-[30px]">
+		<div className="w-full mx-auto flex xl:flex-row flex-col xl:justify-between justify-center 2xl:gap-[30px] gap-[20px]">
+			{/* w-[1047px] */}
+			<div className="2xl:w-[1047px] xl:w-[775px] w-full 2xl:space-y-[30px] xl:space-y-[20px] space-y-[10px]">
 				<ContractMetaInfo />
 				<ContractSummaryRow />
 				<RecentActivity />
 			</div>
-			<div className="max-w-[395px]">
+			{/* 395px */}
+			<div className="2xl:w-[395px] xl:w-[405px] w-full h-full">
 				<ContractSidebar />
 			</div>
 		</div>
