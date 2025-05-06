@@ -2,12 +2,14 @@
 import ContractActionsDropDown from "@/shared/widgets/ContractActionsDropDown/ContractActionsDropDown";
 import { ThreeDotIcon } from "../../../../public/icons/ThreeDotIcon";
 import { useState, useRef, useEffect } from "react";
-import { GlobalModal } from "../GlobalModal/GlobalModal";
+import { GlobalModal } from "../../ui-kit/GlobalModal";
 import { useRouter } from "next/navigation";
 import EndContractModal from "@/components/end-contract/EndContractModal";
+import RefundModal from "@/components/contracts/modals/RefundModal";
 
 const ContractDropdownMenu = ({ contract }: any) => {
 	const [showEndContractModal, setShowEndContractModal] = useState(false);
+	const [showRefundRequestModal,setShowRefundRequestModal]=useState(false)
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const router = useRouter();
 
@@ -22,7 +24,7 @@ const ContractDropdownMenu = ({ contract }: any) => {
 				router.push(`/local/contracts/${id}/work-details`);
 				break;
 			case "Request a Refund":
-				router.push(`/local/contracts/${id}/refund`);
+				 setShowRefundRequestModal(true)
 				break;
 			case "Open a Dispute":
 				router.push(`/local/contracts/${id}/dispute`);
@@ -85,6 +87,15 @@ const ContractDropdownMenu = ({ contract }: any) => {
 						setShowEndContractModal={setShowEndContractModal}
 						handleEndContract={handleEndContract}
 					/>
+				</GlobalModal>
+			)}
+
+			{showRefundRequestModal && (
+				<GlobalModal
+					isOpen={showRefundRequestModal}
+					onClose={() => setShowRefundRequestModal(false)}
+					classes="xl:w-[860px] md:w-[556px] w-[335px] xl:h-[558px] md:h-[517px] h-[462px] md:px-[38px]  px-[24px] xl:py-[28px] py-[24px]">
+					<RefundModal setShowRefundRequestModal={setShowRefundRequestModal} />
 				</GlobalModal>
 			)}
 		</>

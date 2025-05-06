@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { CloseIcon } from "../../../../public/icons/CloseIcon";
+import { CloseIcon } from "../../../public/icons/CloseIcon";
 
 interface GlobalModalProps {
 	isOpen: boolean;
@@ -37,8 +37,7 @@ export const GlobalModal: React.FC<GlobalModalProps> = ({
 	return (
 		<div
 			className={`fixed inset-0 z-50 flex justify-center items-center bg-[#00000069] cursor-default`}>
-			<div
-				className={`${classes} bg-white rounded-[30px] relative`}>
+			<div className={`${classes} bg-white rounded-[30px] relative`}>
 				{/* Close Button */}
 				<div
 					onClick={onClose}
@@ -47,9 +46,7 @@ export const GlobalModal: React.FC<GlobalModalProps> = ({
 				</div>
 
 				{/* Scrollable content */}
-				<div className="">
-					{children}
-				</div>
+				<div className="">{children}</div>
 			</div>
 		</div>
 	);

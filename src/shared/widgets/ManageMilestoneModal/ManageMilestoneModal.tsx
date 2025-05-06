@@ -70,7 +70,9 @@ const ManageMilestoneModal = ({
 							</h2>
 							<div className="w-[100%] h-[42px]">
 								<CustomDatePicker
+									milestoneId={index}
 									onChangeDate={setDate}
+									milestoneDate={date}
 									isIcon={true}
 									width="100%"
 									height="100%"

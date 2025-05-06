@@ -6,6 +6,7 @@ import { useState } from "react";
 import ContractCompletedTimeline from "@/components/contract-overview/ContractCompletedTimeline";
 import ContractTabs from "@/shared/widgets/ContractTabs/ContractTabs";
 import ContractMetaRow from "@/components/contract-overview/ContractMetaRow";
+import ContractOverviewBlock from "@/components/contracts/ContractOverviewBlock";
 
 const page = () => {
 	const [activeTab, setActiveTab] = useState<string>("Overview");
@@ -49,9 +50,7 @@ const page = () => {
 					)) ||
 					(activeTab === "Contract Details" && (
 						<>
-							<h1 className="text-2xl text-center text-red-500">
-								Contract Details is under constructions!
-							</h1>
+							<ContractOverviewBlock/>
 						</>
 					))}
 			</div>

@@ -4,14 +4,17 @@ interface ButtonProps {
 	onClick?: () => void;
 }
 const Button: React.FC<ButtonProps> = ({
-  type = "active",
-  action = "Next",
-  onClick,
+	type = "active",
+	action = "Next",
+	onClick,
 }) => {
-  return (
+	return (
 		<button
+			disabled={type === "disabled" && true}
 			onClick={onClick}
-			className={`w-full h-full flex items-center justify-center cursor-pointer text-[#18470D] ${
+			className={`w-full h-full flex items-center justify-center ${
+				type === "disabled" ? "" : "cursor-pointer"
+			} text-[#18470D] ${
 				type === "transparent"
 					? "xl:px-[41px] px-[25px]"
 					: "xl:px-[25px] px-[20px]"

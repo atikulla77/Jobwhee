@@ -3,44 +3,31 @@
 import Button from "@/shared/ui-kit/Button";
 import CustomDatePicker from "@/shared/ui-kit/CustomDatePicker";
 import { Input } from "@/shared/ui-kit/Input";
-import { GlobalModal } from "@/shared/widgets/GlobalModal/GlobalModal";
+import { GlobalModal } from "@/shared/ui-kit/GlobalModal";
 import ManageMilestoneModal from "@/shared/widgets/ManageMilestoneModal/ManageMilestoneModal";
 import { useState } from "react";
-import CloseMilestoneItemCard from "./CloseMilestoneItemCard";
-import OngoingMilestoneItemCard from "./OngoingMilestoneItemCard";
-import NotStartedMilestoneItemCard from "./NotStartedMilestoneItemCard";
-import { PlusIcon } from "../../../public/icons/talent-client/PlusIcon";
+import MilestoneItemCard from "./MilestoneItemCard";
 
 const MilestoneItem = ({ contract }: any) => {
 	const [showPaymentModal, setPaymentModal] = useState(false);
 	const [showAddMilestoneModal, setShowAddMilestoneModal] = useState(false);
 	const [showMilestoneModal, setShowMilestoneModal] = useState(false);
+	const [addAmount, setShowAddAmount] = useState("");
 	const [date, setDate] = useState<Date | null>(null);
-	const handleButton = (action: string) => {
-		alert(action);
-	};
+	const handleAddMilestone = () => {};
 	return (
 		<div>
 			<div className="w-full xl:pb-0 md:pb-[40px] pb-[52px] md:pt-[33px] pt-[20px]">
 				<div className="md:w-[593px] w-[100%] 2xl:ml-[8.2rem] ml-0">
-					{contract?.milestones &&
-						contract?.milestones.map((item: any) => (
-							<div key={item.id} className="">
-								{item?.status === "closed" ? (
-									<CloseMilestoneItemCard item={item} />
-								) : item?.status === "ongoing" ? (
-									<OngoingMilestoneItemCard
-										item={item}
-										showPaymentModal={showPaymentModal}
-										setPaymentModal={setPaymentModal}
-									/>
-								) : item?.status === "not_started" ? (
-									<NotStartedMilestoneItemCard item={item} />
-								) : (
-									<></>
-								)}
-							</div>
-						))}
+					{contract?.milestones?.map((item: any) => (
+						<MilestoneItemCard
+							key={item.id}
+							item={item}
+							showPaymentModal={showPaymentModal}
+							setPaymentModal={setPaymentModal}
+						/>
+					))}
+
 					<div className="w-full flex md:justify-center justify-end">
 						<div className="w-[1px] md:h-[30px] h-[20px] bg-[#c6c2c2a6] relative">
 							<div className="absolute bottom-0 left-[-2.75px] w-[5.5px] h-[5.5px] rounded-[50%] bg-[#c6c2c2a6] "></div>
@@ -51,7 +38,7 @@ const MilestoneItem = ({ contract }: any) => {
 							<button
 								onClick={() => setShowAddMilestoneModal(true)}
 								className="w-[36px] h-[36px] rounded-[50%] border-[1px] border-[#CBEC5E] hover:bg-[#CBEC5E] text-[18px] z-10 cursor-pointer  ">
-								<PlusIcon />
+								+
 							</button>
 						</div>
 						<div className="absolute right-0 top-0 w-full h-full flex md:items-center items-end md:justify-center justify-start">
@@ -100,6 +87,7 @@ const MilestoneItem = ({ contract }: any) => {
 								Amount*
 							</p>
 							<Input
+								onChange={val => setShowAddAmount(val)}
 								width="100%"
 								height="42px"
 								type="number"
@@ -116,6 +104,7 @@ const MilestoneItem = ({ contract }: any) => {
 							<div className="w-[100%] h-[42px]">
 								<CustomDatePicker
 									onChangeDate={setDate}
+									milestoneDate={date}
 									isIcon={true}
 									width="100%"
 									height="100%"
@@ -131,7 +120,7 @@ const MilestoneItem = ({ contract }: any) => {
 								/>
 							</div>
 							<div className="xl:w-[200px] md:w-[156px] w-[100%] xl:h-[48px] h-[40px]">
-								<Button action={"Save"} type={""} />
+								<Button action={"Save"} type={addAmount && "active"} />
 							</div>
 						</div>
 					</>
