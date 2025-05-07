@@ -2,13 +2,10 @@
 import { TextArea } from "@/shared/ui-kit/TextArea";
 import Button from "@/shared/ui-kit/Button";
 import { useState } from "react";
-import Dropdown from "@/shared/ui-kit/Dropdown";
 import { GlobalModal } from "@/shared/ui-kit/GlobalModal";
-import EndContractModal from "./EndContractModal";
 import FeedbackDropdown from "./FeedbackDropdown";
 import StarRating from "@/shared/ui-kit/StarRating";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import SuccessModal from "../contracts/modals/SuccessModal";
 
 const EndContractExperience = () => {
@@ -42,7 +39,7 @@ const EndContractExperience = () => {
 		{ id: 2, title: "I had difficulties working with the client." },
 		{
 			id: 3,
-			title: "TThe client no longer requires the job.",
+			title: "The client no longer requires the job.",
 		},
 		{
 			id: 4,
@@ -57,29 +54,7 @@ const EndContractExperience = () => {
 		{ id: 8, title: "The client has stopped responding." },
 	];
 
-	const [dropDownData, setDropDrownData] = useState(talentDropDownListData);
-	const [selectedItem, setSelectedItem] = useState("");
-
-	const [ratings, setRatings] = useState({
-		skills: 0,
-		communication: 0,
-		availability: 0,
-		quality: 0,
-		timeliness: 0,
-		cooperation: 0,
-	});
-	const handleCancelEndContract = () => {
-		router.push("/local/contracts");
-	};
-	const handleRatingChange = (category: string, value: number) => {
-		setRatings(prev => ({ ...prev, [category]: value }));
-	};
-
-	const totalScore =
-		Object.values(ratings).reduce((acc, cur) => acc + cur, 0) /
-		Object.keys(ratings).length;
-
-	const clientFeedback = [
+	const talentFeedback = [
 		{ key: "skills", label: "Skills" },
 		{ key: "communication", label: "Communication" },
 		{ key: "availability", label: "Availability" },
@@ -87,7 +62,7 @@ const EndContractExperience = () => {
 		{ key: "timeliness", label: "Timeliness" },
 		{ key: "cooperation", label: "Cooperation" },
 	];
-	const talentFeedback = [
+	const clientFeedback = [
 		{ key: "communication", label: "Communication" },
 		{ key: "clarity", label: "Clarity of Expectations" },
 		{ key: "payment", label: "Payment Timeliness" },
@@ -95,6 +70,65 @@ const EndContractExperience = () => {
 		{ key: "responsiveness", label: "Responsiveness" },
 		{ key: "cooperation", label: "Cooperation" },
 	];
+
+	// Determine feedback type based on dropDownData
+	const [dropDownData, setDropDownData] = useState(talentDropDownListData);
+	const isClientFeedback = dropDownData === clientDropDownListData;
+	const feedbackCategories = isClientFeedback ? clientFeedback : talentFeedback;
+
+	// Initialize ratings with keys from the current feedback type
+	const initialRatings = feedbackCategories.reduce(
+		(acc, { key }) => ({ ...acc, [key]: 0 }),
+		{} as Record<string, number>
+	);
+	const [ratings, setRatings] = useState(initialRatings);
+	const [selectedItem, setSelectedItem] = useState("");
+	const [isDescription, setIsDescription] = useState("");
+	const handleCancelEndContract = () => {
+		router.push("/local/contracts");
+	};
+
+	const handleRatingChange = (category: string, value: number) => {
+		setRatings(prev => ({ ...prev, [category]: value }));
+	};
+
+	// Calculate total score based on current feedback categories
+	const totalScore =
+		feedbackCategories.length > 0
+			? feedbackCategories.reduce(
+					(acc, { key }) => acc + (ratings[key] || 0),
+					0
+			  ) / feedbackCategories.length
+			: 0;
+
+	const handleEndContractSubmit = () => {
+		// Check if reason is selected
+		if (!selectedItem) {
+			alert("Please select a reason for ending the contract.");
+			return;
+		}
+
+		// Check if all ratings are given (not 0)
+		const ratingValues = Object.values(ratings);
+		const allRated = ratingValues.every(value => value > 0);
+
+		if (!allRated) {
+			alert("Please rate all categories before submitting.");
+			return;
+		}
+		if (!isDescription) {
+			alert("Make a feedback");
+			return;
+		}
+		const data = {
+			reason: selectedItem,
+			ratings,
+			score: totalScore,
+			description: isDescription,
+		};
+		setShowContractSuccessfullyCompleted(true);
+	};
+
 	return (
 		<>
 			<div className="xl:w-fit w-full">
@@ -110,17 +144,17 @@ const EndContractExperience = () => {
 				<div className="xl:w-[620px] w-[100%] xl:mb-[45px] md:mb-[20px] mb-[25px]">
 					<FeedbackDropdown
 						dropDownData={dropDownData}
-						setDropDrownData={setDropDrownData}
+						setDropDrownData={setDropDownData}
 						selectedItem={selectedItem}
 						setSelectedItem={setSelectedItem}
 					/>
 				</div>
 
 				<div className="flex flex-col md:gap-[23px] gap-[28px] md:mb-[26px] mb-[32px]">
-					{clientFeedback.map(({ key, label }) => (
+					{feedbackCategories.map(({ key, label }) => (
 						<div key={key} className="w-full flex items-center gap-[10px]">
 							<StarRating
-								rating={ratings[key as keyof typeof ratings]}
+								rating={ratings[key] || 0}
 								onChange={value => handleRatingChange(key, value)}
 								width={23}
 								height={23}
@@ -141,6 +175,7 @@ const EndContractExperience = () => {
 				<div className="space-y-[8px] xl:mb-[27px] md:mb-[46px] mb-[54px]">
 					<p className="text-[18px] text-[#545454]">Feedback</p>
 					<TextArea
+						onChange={val => setIsDescription(val)}
 						placeholder="Give a feedback"
 						width={"620px"}
 						height={"146px"}
@@ -159,7 +194,7 @@ const EndContractExperience = () => {
 					</div>
 					<div className="md:w-[200px] w-full md:h-[48px] h-[40px]">
 						<Button
-							onClick={() => setShowContractSuccessfullyCompleted(true)}
+							onClick={handleEndContractSubmit}
 							type="active"
 							action="End Contract"
 						/>
@@ -167,12 +202,12 @@ const EndContractExperience = () => {
 				</div>
 			</div>
 
-			{/*Success Modal */}
+			{/* Success Modal */}
 			{showContractSuccessfullyCompleted && (
 				<GlobalModal
 					isOpen={showContractSuccessfullyCompleted}
 					onClose={() => setShowContractSuccessfullyCompleted(false)}
-					classes="xl:w-[860px] md:w-[556px] w-[335px] xl:h-[558px] md:h-[417px] h-[428px] md:px-[38px]  px-[24px]">
+					classes="xl:w-[860px] md:w-[556px] w-[335px] xl:h-[558px] md:h-[417px] h-[428px] md:px-[38px] px-[24px]">
 					<SuccessModal
 						setShowContractSuccessfullyCompleted={
 							setShowContractSuccessfullyCompleted

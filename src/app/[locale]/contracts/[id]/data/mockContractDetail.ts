@@ -29,6 +29,13 @@ export const mockContractDetail = {
 			amount: 500,
 			dueDate: "March 01 2025",
 		},
+		{
+			id: 4,
+			title: "Week 4",
+			status: "not_started",
+			amount: 500,
+			dueDate: "March 01 2025",
+		},
 	],
 	participants: [{ name: "Maria T.", avatarUrl: "/images/maria.png" }],
 	files: [
@@ -43,4 +50,26 @@ export const mockContractDetail = {
 		},
 	],
 	actions: ["Request a Refund", "End Contract", "Open a Dispute"],
+};
+
+export const clientContractDetail = {
+	id: "c123",
+	title: "UX Designer for SaaS Platform",
+	status: "ongoing",
+	startDate: "Feb 01, 2025",
+	endDate: "Present",
+	description: "...",
+	category: "UI/UX Design",
+	client: {
+		name: "Maria T.",
+		avatarUrl: "/images/maria.png",
+		location: "Athens, Greece",
+		rating: 4.9,
+	},
+	stats: {
+		totalEarnings: "$3K+",
+		totalJobs: 12,
+		totalHours: 155,
+	},
+	files: [{ name: "brief.pdf", size: "91KB", uploadedBy: "Maria T." }],
 };

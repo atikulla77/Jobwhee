@@ -5,7 +5,7 @@ const FeedbackDropdown = ({
 	setDropDrownData,
 	selectedItem,
 	setSelectedItem,
-}:any) => {
+}: any) => {
 	return (
 		<div className="xl:w-[620px] w-[100%] xl:mb-[45px] md:mb-[20px] mb-[25px]">
 			<Dropdown
@@ -21,4 +21,4 @@ const FeedbackDropdown = ({
 	);
 };
 
-export default FeedbackDropdown
+export default FeedbackDropdown;

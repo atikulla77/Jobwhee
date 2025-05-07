@@ -14,14 +14,21 @@ interface MilestoneItemCardProps {
 	};
 	showPaymentModal?: boolean;
 	setPaymentModal?: (value: boolean) => void;
+	index: number;
+	handleClosed: any;
 }
 
 const MilestoneItemCard = ({
 	item,
 	showPaymentModal,
 	setPaymentModal,
+	index,
+	handleClosed,
 }: MilestoneItemCardProps) => {
-	const [isClosed, setIsClosed] = useState("ongoing");
+	const [isSubmitTheMilestonePayment, setSubmitTheMilestonePayment] = useState({
+		amount: "",
+		note: "",
+	});
 	const statusConfig = {
 		closed: {
 			bgColor: "bg-[#F5F5F5]",
@@ -59,7 +66,10 @@ const MilestoneItemCard = ({
 	};
 
 	const config = statusConfig[item.status];
-	const isOngoing = item.status === isClosed;
+	const isOngoing = item.status === "ongoing";
+
+	// Determine alignment based on index (even: left, odd: right)
+	const isLeftAligned = index % 2 === 0;
 
 	// Parse due date
 	const [month, day, year] = item.dueDate?.split(" ") || [
@@ -70,53 +80,63 @@ const MilestoneItemCard = ({
 
 	// Handle Release button
 	const handleReleasePayment = () => {
-		if (isClosed) {
-			setIsClosed("closed");
+		if (item?.status !== "ongoing") return;
+
+		const minPayment = item.amount;
+		const submittedAmount = parseFloat(isSubmitTheMilestonePayment.amount);
+
+		if (isNaN(submittedAmount)) {
+			alert("Please enter a valid payment amount.");
+			return;
 		}
 
-		if (setPaymentModal) {
-			setPaymentModal(false);
+		if (submittedAmount < minPayment) {
+			alert(`You cannot submit less than the minimum amount: ${minPayment}`);
+			return;
 		}
+		handleClosed(item.id);
+
+		setPaymentModal?.(false);
 	};
 
 	return (
 		<div>
 			<div
 				className={`w-full flex ${
-					isOngoing ? "md:justify-end justify-start" : "justify-start"
+					isLeftAligned ? "justify-start" : "md:justify-end justify-start"
 				} z-50`}>
 				<div
-					className={`w-[297px] h-fit ${
-						isOngoing ? "pb-[80px]" : "pb-[80px]"
-					} flex ${
-						isOngoing ? "md:justify-end justify-start" : "justify-start"
+					className={`w-[297px] h-fit pb-[80px] flex ${
+						isLeftAligned ? "justify-start" : "md:justify-end justify-start"
 					} relative`}>
 					{/* Middle Line */}
 					<div
 						className={`absolute ${
-							isOngoing ? "md:left-0 right-0" : "right-0"
+							isLeftAligned ? "right-0" : "md:left-0 right-0"
 						} top-0 h-full w-[1px] bg-[#c6c2c2a6]`}></div>
 					<div
 						className={`w-[290px] h-[128px] flex ${
-							isOngoing ? "md:justify-end justify-start" : "justify-start"
+							isLeftAligned ? "justify-start" : "md:justify-end justify-start"
 						} items-center relative`}>
 						{/* Circle */}
 						<div
 							className={`absolute ${
-								isOngoing ? "md:left-[-14px] right-[-14px]" : "right-[-14px]"
+								isLeftAligned
+									? "right-[-14px]"
+									: "md:left-[-14px] right-[-14px]"
 							} top-0 h-full z-[1] flex items-center`}>
 							<div className="w-[14px] h-[14px] rounded-[50%] bg-[#CBEC5E]"></div>
 						</div>
 						{/* Arrow */}
 						<div
 							className={`absolute ${
-								isOngoing ? "md:left-0 right-0" : "right-0"
+								isLeftAligned ? "right-0" : "md:left-0 right-0"
 							} top-0 h-full z-[0] flex items-center`}>
 							<div
 								className={`w-[27px] h-[22px] ${
-									isOngoing
-										? "md:rotate-[270deg] rotate-[90deg]"
-										: "rotate-[90deg]"
+									isLeftAligned
+										? "rotate-[90deg]"
+										: "md:rotate-[270deg] rotate-[90deg]"
 								} ${config.arrowBgColor}`}
 								style={{
 									clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
@@ -152,7 +172,9 @@ const MilestoneItemCard = ({
 							<div className="absolute md:bottom-[-50px] bottom-[-45px] w-[266px] mx-auto h-[38px] z-10 text-[15px] font-[500] text-[#18470D] bg-[#CBEC5E] rounded-[30px]">
 								<Button
 									onClick={() =>
-										isOngoing && setPaymentModal ? setPaymentModal(true) : null
+										isOngoing && setPaymentModal
+											? setPaymentModal(true)
+											: alert("Start the milestone")
 									}
 									type="active"
 									action={config.buttonAction}
@@ -185,12 +207,17 @@ const MilestoneItemCard = ({
 									Amount
 								</h2>
 								<Input
+									onChange={val =>
+										setSubmitTheMilestonePayment(prevData => ({
+											...prevData,
+											amount: val,
+										}))
+									}
 									width="100%"
 									height="42px"
 									type="number"
-									placeholder=""
+									placeholder={`Min amount is: ${item.amount.toString()}`}
 									isIcon={false}
-									value={item.amount.toString()}
 								/>
 							</div>
 							<div className="w-[100%] space-y-[8px]">

@@ -8,25 +8,78 @@ import ManageMilestoneModal from "@/shared/widgets/ManageMilestoneModal/ManageMi
 import { useState } from "react";
 import MilestoneItemCard from "./MilestoneItemCard";
 
-const MilestoneItem = ({ contract }: any) => {
+const MilestoneItem = ({ contract: initialContract }: any) => {
+	const [contract, setContract] = useState(initialContract);
 	const [showPaymentModal, setPaymentModal] = useState(false);
 	const [showAddMilestoneModal, setShowAddMilestoneModal] = useState(false);
 	const [showMilestoneModal, setShowMilestoneModal] = useState(false);
-	const [addAmount, setShowAddAmount] = useState("");
 	const [date, setDate] = useState<Date | null>(null);
-	const handleAddMilestone = () => {};
+	const [addMilestoneData, setAddMilestoneData] = useState({
+		title: "",
+		amount: "",
+		status: "not_started",
+	});
+	const formatDate = (date: Date | null): string => {
+		if (!date) return "";
+		const options: Intl.DateTimeFormatOptions = {
+			month: "long",
+			day: "2-digit",
+			year: "numeric",
+		};
+		return date.toLocaleDateString("en-US", options);
+	};
+
+	// Handle add milestone
+	const handleAddMilestone = () => {
+		if (!addMilestoneData.title || !addMilestoneData.amount || !date) {
+			alert("Please fill in all required fields: Title, Amount, and Due Date.");
+			return;
+		}
+
+		const dueDate = formatDate(date);
+		const finalData = { id: +1, ...addMilestoneData, dueDate: dueDate };
+		contract?.milestones.push(finalData);
+		setShowAddMilestoneModal(false);
+	};
+	// handle release closed milestone
+	const handleClosed = (id: string) => {
+		setContract({
+			...contract,
+			milestones: contract.milestones.map((contr: any) =>
+				contr.id === id ? { ...contr, status: "closed" } : contr
+			),
+		});
+	};
+
+	// handle delete milestone
+	const handleDeleteMilestone = (id: string) => {
+		setContract({
+			...contract,
+			milestones: contract.milestones.filter((contr: any) => contr.id !== id),
+		});
+	};
+
 	return (
 		<div>
 			<div className="w-full xl:pb-0 md:pb-[40px] pb-[52px] md:pt-[33px] pt-[20px]">
 				<div className="md:w-[593px] w-[100%] 2xl:ml-[8.2rem] ml-0">
-					{contract?.milestones?.map((item: any) => (
-						<MilestoneItemCard
-							key={item.id}
-							item={item}
-							showPaymentModal={showPaymentModal}
-							setPaymentModal={setPaymentModal}
-						/>
-					))}
+					<div
+						style={{
+							msOverflowStyle: "none",
+							scrollbarWidth: "none",
+						}}
+						className="max-h-[630px] overflow-hidden overflow-y-scroll   ">
+						{contract?.milestones?.map((item: any, index: number) => (
+							<MilestoneItemCard
+								handleClosed={handleClosed}
+								index={index}
+								key={item.id}
+								item={item}
+								showPaymentModal={showPaymentModal}
+								setPaymentModal={setPaymentModal}
+							/>
+						))}
+					</div>
 
 					<div className="w-full flex md:justify-center justify-end">
 						<div className="w-[1px] md:h-[30px] h-[20px] bg-[#c6c2c2a6] relative">
@@ -73,6 +126,12 @@ const MilestoneItem = ({ contract }: any) => {
 								Name of Milestone 3*
 							</p>
 							<Input
+								onChange={val =>
+									setAddMilestoneData(prevData => ({
+										...prevData,
+										title: val,
+									}))
+								}
 								width="100%"
 								height="42px"
 								type="text"
@@ -87,14 +146,18 @@ const MilestoneItem = ({ contract }: any) => {
 								Amount*
 							</p>
 							<Input
-								onChange={val => setShowAddAmount(val)}
+								onChange={val =>
+									setAddMilestoneData(prevData => ({
+										...prevData,
+										amount: val,
+									}))
+								}
 								width="100%"
 								height="42px"
 								type="number"
 								isIcon={false}
-								value="0.0"
 								icon="Amount"
-								placeholder=""
+								placeholder="minimum 5"
 							/>
 						</div>
 						<div className="w-full">
@@ -120,7 +183,15 @@ const MilestoneItem = ({ contract }: any) => {
 								/>
 							</div>
 							<div className="xl:w-[200px] md:w-[156px] w-[100%] xl:h-[48px] h-[40px]">
-								<Button action={"Save"} type={addAmount && "active"} />
+								<Button
+									onClick={handleAddMilestone}
+									action={"Save"}
+									type={
+										addMilestoneData.title &&
+										addMilestoneData.amount &&
+										"active"
+									}
+								/>
 							</div>
 						</div>
 					</>
@@ -134,6 +205,7 @@ const MilestoneItem = ({ contract }: any) => {
 					onClose={() => setShowMilestoneModal(false)}
 					classes="xl:w-[860px] md:w-[556px] w-[335px] xl:h-[768px] md:h-[590px] h-[665px] xl:px-[38px] px-[24px] xl:py-[28px] py-[24px]">
 					<ManageMilestoneModal
+						handleDeleteMilestone={handleDeleteMilestone}
 						setShowMilestoneModal={setShowMilestoneModal}
 						setDate={setDate}
 						date={date}

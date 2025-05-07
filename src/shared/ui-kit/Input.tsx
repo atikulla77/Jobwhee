@@ -9,7 +9,7 @@ type InputProps = {
 	type: string;
 	icon?: string;
 	isIcon: boolean;
-	value: string;
+	value?: string;
 	disabled?: boolean;
 	placeholder: string;
 	onChange?: (value: string) => void;
@@ -50,7 +50,7 @@ export const Input: React.FC<InputProps> = ({
 					disabled
 					onChange={e => {
 						setInputValue(e.target.value);
-						onChange?.(e.target.value); 
+						onChange?.(e.target.value);
 					}}
 					placeholder={placeholder}
 					className={`border border-[#EAEAEA] bg-[#EAEAEA] rounded-[12px] outline-[#18470D] text-[#8B939F] relative ${
@@ -58,8 +58,8 @@ export const Input: React.FC<InputProps> = ({
 					}`}
 				/>
 			) : inputValue === "" ? (
-				<input
-					type={
+				<input 
+					type={ 
 						type === "password" && !isPasswordVisible
 							? "password"
 							: type === "number"
@@ -70,7 +70,7 @@ export const Input: React.FC<InputProps> = ({
 					placeholder={placeholder}
 					onChange={e => {
 						setInputValue(e.target.value);
-						onChange?.(e.target.value);  
+						onChange?.(e.target.value);
 					}}
 					className={`border border-[#AEB3BC] rounded-[12px] outline-[#18470D] placeholder:text-[#8B939F] text-[#8B939F] relative ${
 						isIcon ? "pl-8" : icon === "" ? "pl-2" : "pl-6"
@@ -91,7 +91,7 @@ export const Input: React.FC<InputProps> = ({
 					placeholder={placeholder}
 					onChange={e => {
 						setInputValue(e.target.value);
-						onChange?.(e.target.value);  
+						onChange?.(e.target.value);
 					}}
 					className={`border border-[#AEB3BC] rounded-[12px] outline-[#18470D] placeholder:text-[#8B939F] text-[#8B939F] relative ${
 						isIcon ? "pl-8" : icon === "" ? "pl-2" : "pl-6"

@@ -123,7 +123,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 								/>
 							</div>
 						)}
-						<ul className="max-h-[250px] overflow-y-auto">
+						<ul className="mmax-h-[250px] overflow-y-auto">
 							{filteredList.length > 0 ? (
 								filteredList.map((item, i) => (
 									<li

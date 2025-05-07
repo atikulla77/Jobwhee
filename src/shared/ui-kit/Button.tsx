@@ -10,6 +10,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
 	return (
 		<button
+			type="submit"
 			disabled={type === "disabled" && true}
 			onClick={onClick}
 			className={`w-full h-full flex items-center justify-center ${
