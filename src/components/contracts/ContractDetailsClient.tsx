@@ -24,7 +24,7 @@ const ContractDetailsClient = () => {
         </div>
         <div className="flex items-center mb-[6px]">
           <Image
-            src={"/images/PaymentMethodIcon.png"}
+            src={"/images/icon-images/verifyTalentIcon.png"}
             width={24}
             height={24}
             alt=""
@@ -37,7 +37,6 @@ const ContractDetailsClient = () => {
             rating={5}
             width={16}
             height={16}
-            gap="gap-[1px]"
             responsiveWidthHeight="md:w-[16px] !w-[16px]"
           />
           <p className="text-[16px]">5.0</p>

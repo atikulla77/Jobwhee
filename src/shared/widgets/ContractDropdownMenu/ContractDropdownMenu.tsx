@@ -94,7 +94,7 @@ const ContractDropdownMenu = ({ contract }: any) => {
 				<GlobalModal
 					isOpen={showRefundRequestModal}
 					onClose={() => setShowRefundRequestModal(false)}
-					classes="xl:w-[860px] md:w-[556px] w-[335px] xl:h-[558px] md:h-[517px] h-[462px] md:px-[38px]  px-[24px] xl:py-[28px] py-[24px]">
+					classes="xl:w-[776px] md:w-[556px] w-[335px] xl:h-[683px] md:h-[517px] h-[462px] md:px-[38px]  px-[24px] xl:py-[28px] py-[24px]">
 					<RefundModal setShowRefundRequestModal={setShowRefundRequestModal} />
 				</GlobalModal>
 			)}
