@@ -13,21 +13,26 @@ interface MilestoneItemCardProps {
 		dueDate?: string;
 	};
 	showPaymentModal?: boolean;
-	setPaymentModal?: (value: boolean) => void;
+	setShowPaymentModal?: (value: boolean) => void;
 	index: number;
 	handleClosed: any;
+	hasOngoing: boolean;
 }
 
 const MilestoneItemCard = ({
 	item,
 	showPaymentModal,
-	setPaymentModal,
+	setShowPaymentModal,
 	index,
 	handleClosed,
+	hasOngoing,
 }: MilestoneItemCardProps) => {
-	const [isSubmitTheMilestonePayment, setSubmitTheMilestonePayment] = useState({
-		amount: "",
+	const [submitTheMilestonePayment, setSubmitTheMilestonePayment] = useState({
+		amount: item?.amount.toString() || "",
 		note: "",
+	});
+	const [paymentErrors, setPaymentErrors] = useState({
+		amount: "",
 	});
 	const statusConfig = {
 		closed: {
@@ -49,7 +54,7 @@ const MilestoneItemCard = ({
 			textOpacity: "",
 			dateTextColor: "text-[#000000]",
 			statusLabel: item.status,
-			showButton: true,
+			showButton: item.status === "ongoing",
 			buttonAction: "Submit the payment",
 		},
 		not_started: {
@@ -60,7 +65,7 @@ const MilestoneItemCard = ({
 			textOpacity: "",
 			dateTextColor: "text-[#000000]",
 			statusLabel: "Not Started",
-			showButton: true,
+			showButton: !hasOngoing && item.status === "not_started",
 			buttonAction: "Start the Milestone",
 		},
 	};
@@ -83,20 +88,22 @@ const MilestoneItemCard = ({
 		if (item?.status !== "ongoing") return;
 
 		const minPayment = item.amount;
-		const submittedAmount = parseFloat(isSubmitTheMilestonePayment.amount);
+		const submittedAmount = parseFloat(submitTheMilestonePayment.amount);
+		let errors = { amount: "" };
 
 		if (isNaN(submittedAmount)) {
-			alert("Please enter a valid payment amount.");
-			return;
+			errors.amount = "Please enter a valid payment amount.";
+		} else if (submittedAmount < minPayment) {
+			errors.amount = `Minimum payment amount is €${minPayment}.`;
 		}
 
-		if (submittedAmount < minPayment) {
-			alert(`You cannot submit less than the minimum amount: ${minPayment}`);
-			return;
-		}
+		setPaymentErrors(errors);
+
+		// If there are errors, do not proceed
+		if (errors.amount) return;
+
 		handleClosed(item.id);
-
-		setPaymentModal?.(false);
+		setShowPaymentModal?.(false);
 	};
 
 	return (
@@ -172,8 +179,8 @@ const MilestoneItemCard = ({
 							<div className="absolute md:bottom-[-50px] bottom-[-45px] w-[266px] mx-auto h-[38px] z-10 text-[15px] font-[500] text-[#18470D] bg-[#CBEC5E] rounded-[30px]">
 								<Button
 									onClick={() =>
-										isOngoing && setPaymentModal
-											? setPaymentModal(true)
+										isOngoing && setShowPaymentModal
+											? setShowPaymentModal(true)
 											: alert("Start the milestone")
 									}
 									type="active"
@@ -186,10 +193,10 @@ const MilestoneItemCard = ({
 			</div>
 
 			{/* Payment Modal for Ongoing */}
-			{isOngoing && showPaymentModal && setPaymentModal && (
+			{isOngoing && showPaymentModal && setShowPaymentModal && (
 				<GlobalModal
 					isOpen={showPaymentModal}
-					onClose={() => setPaymentModal(false)}
+					onClose={() => setShowPaymentModal(false)}
 					classes="xl:w-[678px] md:w-[556px] w-[335px] h-[687px] xl:p-10 p-5">
 					<>
 						<h1 className="xl:text-[30px] text-[20px] text-[#18470D] font-[500] mb-[30px]">
@@ -216,9 +223,15 @@ const MilestoneItemCard = ({
 									width="100%"
 									height="42px"
 									type="number"
+									value={submitTheMilestonePayment.amount}
 									placeholder={`Min amount is: ${item.amount.toString()}`}
 									isIcon={false}
 								/>
+								{paymentErrors.amount && (
+									<p className="text-red-500 text-sm mt-1">
+										{paymentErrors.amount}
+									</p>
+								)}
 							</div>
 							<div className="w-[100%] space-y-[8px]">
 								<h2 className="xl:text-[18px] text-[16px] text-[#545454]">
@@ -251,7 +264,7 @@ const MilestoneItemCard = ({
 						<div className="absolute xl:bottom-[36px] md:bottom-[65px] bottom-[24px] xl:right-[38px] md:right-[64px] right-0 w-full flex md:flex-row flex-col-reverse justify-end gap-[8px] md:px-0 px-[24px]">
 							<div className="xl:w-[200px] md:w-[174px] w-[100%] xl:h-[48px] h-[40px]">
 								<Button
-									onClick={() => setPaymentModal(false)}
+									onClick={() => setShowPaymentModal(false)}
 									action="Reject"
 									type="nonBorder"
 								/>

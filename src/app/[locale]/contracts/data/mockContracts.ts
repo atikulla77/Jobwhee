@@ -11,7 +11,7 @@ export const mockContracts = [
 		endDate: "Present",
 		hiredBy: "Katerina S.",
 		category: "House Cleaning",
-		primaryAction: "Submit work for payment",
+		primaryAction: "Submit the payment",
 		actions: [
 			"View Work Details",
 			"End Contract",
@@ -47,7 +47,7 @@ export const mockContracts = [
 		endDate: "April 15, 2025",
 		hiredBy: "Sophia M.",
 		category: "Digital Marketing",
-		primaryAction: "Submit work for payment",
+		primaryAction: "Submit the payment",
 		actions: [
 			"View Work Details",
 			"End Contract",
@@ -65,7 +65,7 @@ export const mockContracts = [
 		endDate: "March 20, 2025",
 		hiredBy: "David L.",
 		category: "House Cleaning",
-		primaryAction: "Submit work for payment",
+		primaryAction: "Submit the payment",
 		actions: [
 			"View Work Details",
 			"End Contract",

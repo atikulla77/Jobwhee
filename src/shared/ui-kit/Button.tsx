@@ -13,7 +13,7 @@ const Button: React.FC<ButtonProps> = ({
 			type="submit"
 			disabled={type === "disabled" && true}
 			onClick={onClick}
-			className={`w-full h-full flex items-center justify-center ${
+			className={`w-full h-full text-base flex items-center justify-center ${
 				type === "disabled" ? "" : "cursor-pointer"
 			} text-[#18470D] ${
 				type === "transparent"

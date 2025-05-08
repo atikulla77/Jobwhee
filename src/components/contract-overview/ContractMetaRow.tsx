@@ -18,7 +18,10 @@ const ContractMetaRow = ({ contract }: any) => {
 					{contract?.milestonesPaid && (
 						<div className="md:w-fit w-full flex flex-col gap-[14px]">
 							<h1 className="">Milestones Paid ({contract?.milestonesPaid})</h1>
-							<p className="text-[16px] font-normal md:text-center">€ 500</p>
+							<p className="text-[16px] font-normal md:text-center">
+								{" "}
+								€ {contract?.totalSpend}
+							</p>
 						</div>
 					)}
 					{contract?.milestonesRemaining && (

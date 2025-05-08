@@ -8,13 +8,17 @@ import StarRating from "@/shared/ui-kit/StarRating";
 import { useRouter } from "next/navigation";
 import SuccessModal from "../contracts/modals/SuccessModal";
 
-const EndContractExperience = () => {
+const EndContractExperience = ({ contractId }: any) => {
 	const router = useRouter();
 	const [
 		showContractSuccessfullyCompleted,
 		setShowContractSuccessfullyCompleted,
 	] = useState(false);
-
+const [endContractErrors, setEndContractErrors] = useState({
+	reason: "",
+	ratings: "",
+	description: "",
+});
 	const clientDropDownListData = [
 		{ id: 1, title: "The job has been completed successfully" },
 		{ id: 2, title: "The talent wasn’t the right fit" },
@@ -85,7 +89,7 @@ const EndContractExperience = () => {
 	const [selectedItem, setSelectedItem] = useState("");
 	const [isDescription, setIsDescription] = useState("");
 	const handleCancelEndContract = () => {
-		router.push("/local/contracts");
+		router.push(`/local/contracts/${contractId}`);
 	};
 
 	const handleRatingChange = (category: string, value: number) => {
@@ -102,10 +106,15 @@ const EndContractExperience = () => {
 			: 0;
 
 	const handleEndContractSubmit = () => {
+		let errors = {
+			reason: "",
+			ratings: "",
+			description: "",
+		};
+
 		// Check if reason is selected
 		if (!selectedItem) {
-			alert("Please select a reason for ending the contract.");
-			return;
+			errors.reason = "Please select a reason for ending the contract.";
 		}
 
 		// Check if all ratings are given (not 0)
@@ -113,22 +122,27 @@ const EndContractExperience = () => {
 		const allRated = ratingValues.every(value => value > 0);
 
 		if (!allRated) {
-			alert("Please rate all categories before submitting.");
-			return;
+			errors.ratings = "Please rate all categories before submitting.";
 		}
+
 		if (!isDescription) {
-			alert("Make a feedback");
-			return;
+			errors.description = "Please provide feedback.";
 		}
+
+		setEndContractErrors(errors);
+
+		// If there are any errors, prevent submission
+		if (errors.reason || errors.ratings || errors.description) return;
+
 		const data = {
 			reason: selectedItem,
 			ratings,
 			score: totalScore,
 			description: isDescription,
 		};
+
 		setShowContractSuccessfullyCompleted(true);
 	};
-
 	return (
 		<>
 			<div className="xl:w-fit w-full">
@@ -148,23 +162,35 @@ const EndContractExperience = () => {
 						selectedItem={selectedItem}
 						setSelectedItem={setSelectedItem}
 					/>
+					{endContractErrors.reason && (
+						<p className="text-red-500 text-sm mt-1">
+							{endContractErrors.reason}
+						</p>
+					)}
 				</div>
 
-				<div className="flex flex-col md:gap-[23px] gap-[28px] md:mb-[26px] mb-[32px]">
-					{feedbackCategories.map(({ key, label }) => (
-						<div key={key} className="w-full flex items-center gap-[10px]">
-							<StarRating
-								rating={ratings[key] || 0}
-								onChange={value => handleRatingChange(key, value)}
-								width={23}
-								height={23}
-								responsiveWidthHeight="md:w-[23px] !w-[25px]"
-							/>
-							<h3 className="md:text-[20px] text-[14px] text-[#545454]">
-								{label}
-							</h3>
-						</div>
-					))}
+				<div>
+					<div className="flex flex-col md:gap-[23px] gap-[28px] md:mb-[26px] mb-[32px]">
+						{feedbackCategories.map(({ key, label }) => (
+							<div key={key} className="w-full flex items-center gap-[10px]">
+								<StarRating
+									rating={ratings[key] || 0}
+									onChange={value => handleRatingChange(key, value)}
+									width={23}
+									height={23}
+									responsiveWidthHeight="md:w-[23px] !w-[25px]"
+								/>
+								<h3 className="md:text-[20px] text-[14px] text-[#545454]">
+									{label}
+								</h3>
+							</div>
+						))}
+					</div>
+					{endContractErrors.ratings && (
+						<p className="text-red-500 text-sm mt-1">
+							{endContractErrors.ratings}
+						</p>
+					)}
 				</div>
 
 				{/* Total score */}
@@ -181,6 +207,11 @@ const EndContractExperience = () => {
 						height={"146px"}
 						responsiveWidthHeight="xl:!w-[620px] !w-[100%] !h-[146px]"
 					/>
+					{endContractErrors.description && (
+						<p className="text-red-500 text-sm mt-1">
+							{endContractErrors.description}
+						</p>
+					)}
 				</div>
 
 				{/* Buttons */}
@@ -209,6 +240,7 @@ const EndContractExperience = () => {
 					onClose={() => setShowContractSuccessfullyCompleted(false)}
 					classes="xl:w-[860px] md:w-[556px] w-[335px] xl:h-[558px] md:h-[417px] h-[428px] md:px-[38px] px-[24px]">
 					<SuccessModal
+						handleCancelEndContract={handleCancelEndContract}
 						setShowContractSuccessfullyCompleted={
 							setShowContractSuccessfullyCompleted
 						}

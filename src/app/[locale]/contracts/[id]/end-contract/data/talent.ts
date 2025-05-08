@@ -1,4 +1,5 @@
 export const talent = {
+	contractId:"abc123",
 	currentStep: 1,
 	reason: "Job completed",
 	feedback: {

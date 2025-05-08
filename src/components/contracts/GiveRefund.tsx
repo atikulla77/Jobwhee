@@ -5,7 +5,7 @@ import { useState } from "react";
 import { DropDownArrowIcon } from "../../../public/icons/DropDownArrowIcon";
 
 const GiveRefund = () => {
-  const [first, setfirst] = useState("");
+  const [notesForClient, setNotesForClient] = useState("");
   return (
     <div className="w-full mb-[2rem]">
       <div className="mt-8 xl:mb-[30px] mb-[10px] md:max-w-full mx-auto flex items-center xl:pl-[30px] md:pl-[19px] pl-[12px] border-1 border-[#CBEC5E] rounded-2xl 2xl:h-[121px] xl:h-[116px] md:h-[82px] h-[54px] text-black">
@@ -71,7 +71,7 @@ const GiveRefund = () => {
                 Note for the client
               </p>
               <TextArea
-                onChange={(a) => setfirst(a)}
+                onChange={(a) => setNotesForClient(a)}
                 placeholder="Let the client know why you are issuing this refund."
                 width={"100%"}
                 height={"146px"}

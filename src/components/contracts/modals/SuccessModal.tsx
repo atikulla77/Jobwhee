@@ -1,7 +1,10 @@
 import Button from "@/shared/ui-kit/Button";
 import Image from "next/image";
 
-const SuccessModal = ({ setShowContractSuccessfullyCompleted }:any) => {
+const SuccessModal = ({
+	setShowContractSuccessfullyCompleted,
+	handleCancelEndContract,
+}: any) => {
 	return (
 		<div>
 			<div>
@@ -29,7 +32,11 @@ const SuccessModal = ({ setShowContractSuccessfullyCompleted }:any) => {
 						/>
 					</div>
 					<div className="md:w-[200px] w-[100%] md:h-[48px] h-[40px]">
-						<Button type={"active"} action={"End contract"} />
+						<Button
+							onClick={() => handleCancelEndContract()}
+							type={"active"}
+							action={"End contract"}
+						/>
 					</div>
 				</div>
 			</div>
@@ -37,4 +44,4 @@ const SuccessModal = ({ setShowContractSuccessfullyCompleted }:any) => {
 	);
 };
 
-export default SuccessModal
+export default SuccessModal;

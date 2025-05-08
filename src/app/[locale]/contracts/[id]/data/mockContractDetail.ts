@@ -6,7 +6,7 @@ export const mockContractDetail = {
 	inEscrow: 500,
 	milestonesPaid: 1,
 	milestonesRemaining: 2,
-	totalSpend: 2000,
+	totalSpend: 500,
 	milestones: [
 		{
 			id: 1,
@@ -19,7 +19,7 @@ export const mockContractDetail = {
 			id: 2,
 			title: "Week 2",
 			status: "ongoing",
-			amount: 500,
+			amount: 777,
 			dueDate: "March 01 2025",
 		},
 		{

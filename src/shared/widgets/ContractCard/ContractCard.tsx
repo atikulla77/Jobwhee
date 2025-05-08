@@ -5,6 +5,10 @@ import Button from "@/shared/ui-kit/Button";
 import { BriefcaseIcon } from "../../../../public/icons/BriefcaseIcon";
 import { CategoryIcon } from "../../../../public/icons/CategoryIcon";
 import { DocumentIcon } from "../../../../public/icons/DocumentIcon";
+import { GlobalModal } from "@/shared/ui-kit/GlobalModal";
+import { useState } from "react";
+import { Input } from "@/shared/ui-kit/Input";
+import { TextArea } from "@/shared/ui-kit/TextArea";
 
 interface ContractCardProps {
 	id: string;
@@ -22,8 +26,12 @@ interface ContractCardProps {
 const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
 	contract,
 }) => {
-	const handleButton = (action: string) => {
-		alert(action);
+	const [showPaymentModal, setShowPaymentModal] = useState(false);
+
+	const handleSubmitPaymentButton = (action: string) => {
+		if (action.toLocaleLowerCase() === "submit the payment") {
+			setShowPaymentModal(true);
+		}
 	};
 
 	const truncateDescription = (
@@ -52,7 +60,6 @@ const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
 					<div className="flex items-center 2xl:gap-[5px] xl:gap-[7px] gap-[8px]">
 						<div className="text-[#18470D] text-[16px] md:text-[24px] flex items-center">
 							<button
-								onClick={() => alert("button is clicked ")}
 								title=""
 								className="cursor-pointer md:w-[24px] w-[17px] md:h-[24px] h-[17px]">
 								<DocumentIcon />
@@ -107,12 +114,12 @@ const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
 						{contract.primaryAction && (
 							<div className="md:w-fit w-[231px] xl:h-[48px] h-[40px]">
 								<Button
-									onClick={() => {
-										handleButton(contract.primaryAction);
-									}}
+									onClick={() =>
+										handleSubmitPaymentButton(contract?.primaryAction)
+									}
 									action={contract.primaryAction}
 									type={
-										contract.primaryAction === "Submit work for payment"
+										contract.primaryAction === "Submit the payment"
 											? "active"
 											: "transparent"
 									}
@@ -125,6 +132,81 @@ const ContractCard: React.FC<{ contract: ContractCardProps }> = ({
 					</div>
 				</div>
 			</div>
+			<GlobalModal
+				isOpen={showPaymentModal}
+				onClose={() => setShowPaymentModal(false)}
+				classes="xl:w-[678px] md:w-[556px] w-[335px] h-[687px] xl:p-10 p-5">
+				<>
+					<h1 className="xl:text-[30px] text-[20px] text-[#18470D] font-[500] mb-[30px]">
+						Submit the payment
+					</h1>
+					<p className="xl:text-[18px] text-[16px] text-[#545454] mb-[8px]">
+						Name of the milestone
+					</p>
+					<div className="h-[42px] bg-[#EAEAEA] rounded-[12px] flex items-center p-[8px]">
+						<p className="text-[#8B939F]">{contract?.title}</p>
+					</div>
+					<div className="w-full flex md:flex-row flex-col justify-between xl:gap-[46px] md:gap-[12px] gap-[20px] mt-[20px] xl:mb-[20px] md:mb-[26px] mb-[24px]">
+						<div className="w-[100%] space-y-[8px]">
+							<h2 className="xl:text-[18px] text-[16px] text-[#545454]">
+								Amount
+							</h2>
+							<Input
+								// onChange={val =>
+								// 	setSubmitTheMilestonePayment(prevData => ({
+								// 		...prevData,
+								// 		amount: val,
+								// 	}))
+								// }
+								width="100%"
+								height="42px"
+								type="number"
+								value={500}
+								placeholder={`Min amount is: 500`}
+								isIcon={false}
+							/>
+						</div>
+						<div className="w-[100%] space-y-[8px]">
+							<h2 className="xl:text-[18px] text-[16px] text-[#545454]">
+								Due date
+							</h2>
+							<Input
+								width="100%"
+								height="42px"
+								type="text"
+								isIcon={false}
+								placeholder=""
+								disabled={true}
+							/>
+						</div>
+					</div>
+					<h2 className="xl:text-[18px] text-[16px] text-[#545454] mb-[8px]">
+						Note (Optional)
+					</h2>
+					<TextArea
+						placeholder="Write additional note"
+						width="100%"
+						height="146px"
+						responsiveWidthHeight="w-[100%] h-[146px]"
+					/>
+					<div className="absolute xl:bottom-[36px] md:bottom-[65px] bottom-[24px] xl:right-[38px] md:right-[64px] right-0 w-full flex md:flex-row flex-col-reverse justify-end gap-[8px] md:px-0 px-[24px]">
+						<div className="xl:w-[200px] md:w-[174px] w-[100%] xl:h-[48px] h-[40px]">
+							<Button
+								onClick={() => setShowPaymentModal(false)}
+								action="Reject"
+								type="nonBorder"
+							/>
+						</div>
+						<div className="xl:w-[200px] md:w-[174px] w-[100%] xl:h-[48px] h-[40px]">
+							<Button
+								onClick={() => setShowPaymentModal(false)}
+								action="Release payment"
+								type="active"
+							/>
+						</div>
+					</div>
+				</>
+			</GlobalModal>
 		</>
 	);
 };

@@ -8,17 +8,25 @@ import ManageMilestoneModal from "@/shared/widgets/ManageMilestoneModal/ManageMi
 import { useState } from "react";
 import MilestoneItemCard from "./MilestoneItemCard";
 
-const MilestoneItem = ({ contract: initialContract }: any) => {
-	const [contract, setContract] = useState(initialContract);
-	const [showPaymentModal, setPaymentModal] = useState(false);
+const MilestoneItem = ({ contract, setShowContractMetaData }: any) => {
+	const [showPaymentModal, setShowPaymentModal] = useState(false);
 	const [showAddMilestoneModal, setShowAddMilestoneModal] = useState(false);
 	const [showMilestoneModal, setShowMilestoneModal] = useState(false);
 	const [date, setDate] = useState<Date | null>(null);
+	const [errors, setErrors] = useState({
+		title: "",
+		amount: "",
+		date: "",
+	});
+
 	const [addMilestoneData, setAddMilestoneData] = useState({
 		title: "",
 		amount: "",
 		status: "not_started",
 	});
+	const hasOngoing = contract?.milestones?.some(
+		(itm: any) => itm.status === "ongoing"
+	);
 	const formatDate = (date: Date | null): string => {
 		if (!date) return "";
 		const options: Intl.DateTimeFormatOptions = {
@@ -31,29 +39,81 @@ const MilestoneItem = ({ contract: initialContract }: any) => {
 
 	// Handle add milestone
 	const handleAddMilestone = () => {
-		if (!addMilestoneData.title || !addMilestoneData.amount || !date) {
-			alert("Please fill in all required fields: Title, Amount, and Due Date.");
-			return;
+		let hasError = false;
+		const newErrors = { title: "", amount: "", date: "" };
+
+		if (!addMilestoneData.title) {
+			newErrors.title = "Title is required.";
+			hasError = true;
 		}
 
+		if (!addMilestoneData.amount) {
+			newErrors.amount = "Amount is required.";
+			hasError = true;
+		} else if (isNaN(Number(addMilestoneData.amount))) {
+			newErrors.amount = "Amount must be a number.";
+			hasError = true;
+		} else if (Number(addMilestoneData.amount) < 5) {
+			newErrors.amount = "Amount must be at least 5.";
+			hasError = true;
+		}
+
+		if (!date) {
+			newErrors.date = "Due date is required.";
+			hasError = true;
+		}
+
+		setErrors(newErrors);
+
+		if (hasError) return;
+
 		const dueDate = formatDate(date);
-		const finalData = { id: +1, ...addMilestoneData, dueDate: dueDate };
-		contract?.milestones.push(finalData);
+		const finalData = { id: Date.now(), ...addMilestoneData, dueDate };
+
+		setShowContractMetaData({
+			...contract,
+			milestones: [...contract.milestones, finalData],
+		});
+
 		setShowAddMilestoneModal(false);
+
+		// Clear errors after successful submission
+		setErrors({ title: "", amount: "", date: "" });
 	};
 	// handle release closed milestone
 	const handleClosed = (id: string) => {
-		setContract({
+		const updatedMilestones = contract.milestones.map((contr: any) =>
+			contr.id === id ? { ...contr, status: "closed" } : contr
+		);
+
+		const paidMilestonesCount = updatedMilestones.filter(
+			(milestone: any) => milestone.status === "closed"
+		).length;
+		const remainingMilestonesCount = updatedMilestones.filter(
+			(milestone: any) => milestone.status !== "closed"
+		).length;
+
+		const totalSpend = updatedMilestones
+			.filter((milestone: any) => milestone.status === "closed")
+			.reduce((acc: number, milestone: any) => acc + milestone.amount, 0);
+
+		const inEscrow = updatedMilestones
+			.filter((milestone: any) => milestone.status === "ongoing")
+			.reduce((acc: number, milestone: any) => acc + milestone.amount, 0);
+
+		setShowContractMetaData({
 			...contract,
-			milestones: contract.milestones.map((contr: any) =>
-				contr.id === id ? { ...contr, status: "closed" } : contr
-			),
+			milestones: updatedMilestones,
+			milestonesPaid: paidMilestonesCount,
+			milestonesRemaining: remainingMilestonesCount,
+			totalSpend,
+			inEscrow,
 		});
 	};
 
 	// handle delete milestone
 	const handleDeleteMilestone = (id: string) => {
-		setContract({
+		setShowContractMetaData({
 			...contract,
 			milestones: contract.milestones.filter((contr: any) => contr.id !== id),
 		});
@@ -71,12 +131,13 @@ const MilestoneItem = ({ contract: initialContract }: any) => {
 						className="max-h-[630px] overflow-hidden overflow-y-scroll   ">
 						{contract?.milestones?.map((item: any, index: number) => (
 							<MilestoneItemCard
+								hasOngoing={hasOngoing}
 								handleClosed={handleClosed}
 								index={index}
 								key={item.id}
 								item={item}
 								showPaymentModal={showPaymentModal}
-								setPaymentModal={setPaymentModal}
+								setShowPaymentModal={setShowPaymentModal}
 							/>
 						))}
 					</div>
@@ -123,7 +184,7 @@ const MilestoneItem = ({ contract: initialContract }: any) => {
 
 						<div className="w-full xl:mb-[29px] md:mb-[16px] mb-[20px]">
 							<p className="md:text-[18px] text-[16px] text-[#545454] mb-[8px]">
-								Name of Milestone 3*
+								Name of Milestone*
 							</p>
 							<Input
 								onChange={val =>
@@ -136,9 +197,11 @@ const MilestoneItem = ({ contract: initialContract }: any) => {
 								height="42px"
 								type="text"
 								isIcon={false}
-								value=""
 								placeholder="Milestone name"
 							/>
+							{errors.title && (
+								<p className="text-red-500 text-sm mt-1">{errors.title}</p>
+							)}
 						</div>
 
 						<div className="w-full xl:mb-[29px] md:mb-[16px] mb-[20px]">
@@ -159,7 +222,11 @@ const MilestoneItem = ({ contract: initialContract }: any) => {
 								icon="Amount"
 								placeholder="minimum 5"
 							/>
+							{errors.amount && (
+								<p className="text-red-500 text-sm mt-1">{errors.amount}</p>
+							)}
 						</div>
+
 						<div className="w-full">
 							<p className="md:text-[18px] text-[16px] text-[#545454] mb-[8px]">
 								Due Date
@@ -173,7 +240,11 @@ const MilestoneItem = ({ contract: initialContract }: any) => {
 									height="100%"
 								/>
 							</div>
+							{errors.date && (
+								<p className="text-red-500 text-sm mt-1">{errors.date}</p>
+							)}
 						</div>
+
 						<div className="absolute xl:bottom-[36px] md:bottom-[38px] bottom-[24px] md:right-[38px] right-0 w-full flex md:flex-row flex-col-reverse justify-end xl:gap-[8px] gap-[16px] md:px-0 px-[24px]">
 							<div className="xl:w-[200px] md:w-[156px] w-[100%] xl:h-[48px] h-[40px]">
 								<Button
@@ -187,9 +258,9 @@ const MilestoneItem = ({ contract: initialContract }: any) => {
 									onClick={handleAddMilestone}
 									action={"Save"}
 									type={
-										addMilestoneData.title &&
-										addMilestoneData.amount &&
-										"active"
+										addMilestoneData.title && addMilestoneData.amount
+											? "active"
+											: ""
 									}
 								/>
 							</div>

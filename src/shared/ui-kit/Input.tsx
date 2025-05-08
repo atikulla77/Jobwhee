@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EyeCloseIcon } from "../../../public/icons/EyeCloseIcon";
 import { EyeOpenIcon } from "../../../public/icons/eyeOpenIcon";
 import { UserIcon } from "../../../public/icons/userIcon";
@@ -9,7 +9,7 @@ type InputProps = {
 	type: string;
 	icon?: string;
 	isIcon: boolean;
-	value?: string;
+	value?: number | string;
 	disabled?: boolean;
 	placeholder: string;
 	onChange?: (value: string) => void;
@@ -20,7 +20,7 @@ export const Input: React.FC<InputProps> = ({
 	type = "text",
 	icon = "",
 	isIcon = true,
-	value = "John",
+	value,
 	disabled = false,
 	placeholder = "",
 	onChange,
@@ -58,8 +58,8 @@ export const Input: React.FC<InputProps> = ({
 					}`}
 				/>
 			) : inputValue === "" ? (
-				<input 
-					type={ 
+				<input
+					type={
 						type === "password" && !isPasswordVisible
 							? "password"
 							: type === "number"
