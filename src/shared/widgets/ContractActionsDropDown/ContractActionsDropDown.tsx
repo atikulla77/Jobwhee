@@ -1,8 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { CloseIcon } from "../../../../public/icons/talent-client/CloseIcon";
 import { RefundIcon } from "../../../../public/icons/RefundIcon";
 import { DisputeIcon } from "../../../../public/icons/talent-client/DisputeIcon";
+import { CloseIcon } from "../../../../public/icons/CloseIcon";
 
 interface ContractActionsDropDownProps {
 	id: string;

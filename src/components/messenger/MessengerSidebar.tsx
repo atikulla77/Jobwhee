@@ -6,24 +6,32 @@ import { SearchBar } from '@/shared/ui-kit/SearchBar';
 import DropdownSelect from '@/shared/ui-kit/DropdownSelect';
 
 
-interface MessengerSidebarProps {
-    onSelectChat: () => boolean;
-  }
+interface ChatUser {
+    id: string;
+    name: string;
+    avatarUrl?: string;
+    isOnline?: string
+}
 
-const MessengerSidebar: React.FC<MessengerSidebarProps> = ({ onSelectChat }) => {
+interface MessengerSidebarProps {
+    setSelectedChatUser: React.Dispatch<React.SetStateAction<ChatUser | null>>;
+    chatListData: any;
+}
+
+const MessengerSidebar: React.FC<MessengerSidebarProps> = ({ setSelectedChatUser, chatListData }) => {
     const [filter, setFilter] = useState<string>('All');
     const [search, setSearch] = useState<string>("")
 
     return (
         <div>
             <div className='flex justify-center sm:justify-start items-center'>
-                <div className='w-[334px] lg:w-[390px] lg:h-[830px] border border-[#CBEC5E] rounded-[30px] p-1'>
-                    <h1 className='font-medium text-[26px] p-2 mt-3'>
+                <div className='w-[335px] 2xl:w-[390px] xl:w-[285px] lg:w-[334px] md:w-[334px] sm:w-[420px] border border-[#CBEC5E] rounded-[30px] rou p-1'>
+                    <h1 className='font-medium text-[20px] sm:text-[26px] p-2 mt-3'>
                         Messages
                     </h1>
                     <div className='flex justify-between items-center mt-7 px-1'>
                         <div className=''>
-                            <SearchBar className="w-[244px] lg:w-[309px]" placeholder="Search" setSearch={setSearch} />
+                            <SearchBar className="w-[260px] 2xl:w-[309px] xl:w-[204px] lg:w-[236px] md:w-[260px] sm:[249px]" placeholder="Search" setSearch={setSearch} />
                         </div>
                         <div className='flex justify-center items-center'>
                             <DropdownSelect
@@ -33,7 +41,7 @@ const MessengerSidebar: React.FC<MessengerSidebarProps> = ({ onSelectChat }) => 
                             />
                         </div>
                     </div>
-                    <ChatListItem onSelectChat={onSelectChat} search={search} filter={filter} />
+                    <ChatListItem chatListData={chatListData} search={search} filter={filter} setSelectedChatUser={setSelectedChatUser} />
                 </div>
             </div>
         </div>

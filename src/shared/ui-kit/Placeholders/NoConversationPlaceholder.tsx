@@ -5,7 +5,7 @@ import Image from 'next/image'
 const NoConversationPlaceholder = () => {
     return (
         <div className='flex flex-col justify-center items-center'>
-            <Image src={noConversation} alt='' className='w-[199.25px] h-[176px]' />
+            <Image src={noConversation} alt='' className='w-[199.25px] h-[176px] grayscale-[100%]' />
             <p className='text-[#545454] text-[16px]'>
                 Conversations will appear here
             </p>

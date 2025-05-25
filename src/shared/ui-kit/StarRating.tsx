@@ -1,57 +1,52 @@
 "use client";
 import Image from "next/image";
 import { FC } from "react";
-import React from "react";
 
 interface RatingProps {
-	rating: number;
-	width: number;
-	height: number;
-	responsiveWidthHeight?: string;
-	onChange?: (rating: number) => void; // <-- Optional handler
+  rating: number;
 }
 
-const StarRating: FC<RatingProps> = ({
-	rating,
-	width,
-	height,
-	responsiveWidthHeight = "",
-	onChange,
-}) => {
-	const totalStars = 5;
+const StarRating: FC<RatingProps> = ({ rating }) => {
+  const totalStars = 5;
+  const stars = [];
 
-	const handleClick = (index: number) => {
-		if (onChange) {
-			onChange(index);
-		}
-	};
+  const roundedRating = Math.round(rating * 2) / 2;
 
-	const renderStar = (i: number) => {
-		let src = "/images/icon-images/emptyStarIcon.png";
-		if (rating >= i) {
-			src = "/images/icon-images/starIcon.png";
-		} else if (rating >= i - 0.5) {
-			src = "/images/icon-images/halfStarIcon.png";
-		}
+  for (let i = 1; i <= totalStars; i++) {
+    if (roundedRating >= i) {
+      stars.push(
+        <Image
+          key={i}
+          src="/images/icon-images/starIcon.png"
+          alt="Full Star"
+          width={14}
+          height={14}
+        />,
+      );
+    } else if (roundedRating >= i - 0.5) {
+      stars.push(
+        <Image
+          key={i}
+          src="/images/icon-images/halfStarIcon.png"
+          alt="Half Star"
+          width={14}
+          height={14}
+        />,
+      );
+    } else {
+      stars.push(
+        <Image
+          key={i}
+          src="/images/icon-images/emptyStarIcon.png"
+          alt="Empty Star"
+          width={14}
+          height={14}
+        />,
+      );
+    }
+  }
 
-		return (
-			<Image
-				key={i}
-				src={src}
-				alt={`Star ${i}`}
-				width={width}
-				height={height}
-				onClick={() => handleClick(i)}
-				className={`cursor-pointer ${responsiveWidthHeight}`}
-			/>
-		);
-	};
-
-	return (
-		<div className="flex items-center md:gap-[4px] gap-[2px]">
-			{Array.from({ length: totalStars }, (_, i) => renderStar(i + 1))}
-		</div>
-	);
+  return <div className="flex items-center justify-center gap-1">{stars}</div>;
 };
 
 export default StarRating;

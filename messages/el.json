@@ -1,0 +1,87 @@
+{
+  "HomePage": {
+    "header": {
+      "postJob": "Δημοσιεύστε μια Εργασία",
+      "exploreJobs": "Εξερευνήστε θέσεις Εργασίας",
+      "howItWorks": "Πώς Λειτουργεί",
+      "signIn": "Σύνδεση",
+      "signup": "Εγγραφή"
+    },
+    "shared": {
+      "placeholder": "Βρείτε μια εργασία, επαγγελματία ή υπηρεσία",
+      "client": "Πελάτης",
+      "jobs": "δουλειά",
+      "talent": "Επαγγελματίας",
+      "talentDesc": "Προλάβετε έναν επαγγελματία χωρίς κόπο ",
+      "clientDesc": "Κάντε αίτηση για θέσεις εργασίας που δημοσιεύονται από πελάτες",
+      "subscribe": "Συνεισφέρω",
+      "firstNameLastName": "Όνομα Επώνυμο"
+    },
+    "hero": {
+      "contractBtn": "Εγγραφείτε για Σύμβαση"
+    },
+    "discover": "Ανακαλύψτε",
+    "contract": {
+      "contractHeadline": "ΕΠΙΤΥΧΗΜΕΝΑ ΣΥΜΒΟΛΑΙΑ",
+      "contractItemTitle": "ΣΥΜΒΟΛΑΙΟ",
+      "client": "Πελάτης",
+      "talent": "Επαγγελματίας",
+      "description": "Περιγραφή",
+      "jobDetails": "Λεπτομέρειες Εργασίας",
+      "startDate": "Ημερομηνία Έναρξης:",
+      "endDate": "Ημερομηνία Λήξης:",
+      "status": "Κατάσταση:",
+      "budget": "Προϋπολογισμός",
+      "paymentType": "Τύπος πληρωμής:"
+    },
+    "perfectMatch": {
+      "perfectMatchHeadline": "ΒΡΕΙΤΕ ΤΟ ΙΔΑΝΙΚΟ ΤΑΙΡΙΑΣΜΑ ΣΕ ΔΕΥΤΕΡΟΛΕΠΤΑ",
+      "signup": "ΕΓΓΡΑΦΗ",
+      "contactUs": "Σχετικά με Εμάς"
+    },
+    "stepsOfSuccess": "Βήματα Επιτυχίας",
+    "advantages": "ΠΛΕΟΝΕΚΤΗΜΑΤΑ",
+    "advantagesOf": "ΠΛΕΟΝΕΚΤΗΜΑΤΑ ΤΗΣ ΠΛΑΤΦΟΡΜΑΣ",
+    "Video": {
+      "videoHeadline": "ΔΕΙΤΕ ΤΟ JOBWHEE ΣΕ ΔΡΑΣΗ",
+      "sign-in": "Σύνδεση",
+      "sign-up": "Εγγραφή",
+      "contract": {
+        "title": "Το επόμενο είναι δικό σας!",
+        "btn": "Δημιουργία Συμβολαίου"
+      },
+      "send-message": {
+        "name": "Μαρία Σμιθ",
+        "profession": "Καθηγήτρια Μαθηματικών",
+        "btn": "Αποστολή Μηνύματος"
+      },
+      "unlock": "Ξεκλειδώστε την Ευκαιρία σας"
+    },
+    "topTalent": "Κορυφαίοι Επαγγελματίες",
+    "getAnswers": "ΛΑΒΕΤΕ ΑΠΑΝΤΗΣΕΙΣ",
+    "aboutUs": "Σχετικά με Εμάς",
+    "moreFAQ": "Περισσότερες FAQ's",
+    "FAQ": "Συχνές Ερωτήσεις",
+    "contracts": "Συμβάσεις",
+    "platform": "Πλατφόρμα",
+    "services": "Υπηρεσίες",
+    "termsOfService": "Όροι Υπηρεσίας",
+    "privacyPolicy": "Πολιτική Απορρήτου",
+    "cookies": "Ρυθμίσεις",
+    "topTalentFooter": "Κορυφαίοι Επαγγελματίες",
+    "enterYourEmail": "Εισάγετε το email σας",
+    "allRightsReserved": "© 2025 JobWhee. Όλα τα δικαιώματα διατηρούνται.",
+    "subscribe": "Εγγραφείτε",
+    "subscribeNow": "Εγγραφείτε τώρα ",
+    "beFirstToKnow": "και να είστε οι πρώτοι που θα μάθετε!"
+  },
+  "AboutUsPage": {
+    "title": "Σχετικά με Εμάς",
+    "CEO": "Founder & CEO"
+  },
+  "PrivacyPolicyPage": {
+    "title1": "Όροι Υπηρεσίας",
+    "title2": "Πολιτική Απορρήτου",
+    "download": "Download"
+  }
+}

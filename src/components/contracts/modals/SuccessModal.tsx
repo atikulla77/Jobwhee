@@ -1,5 +1,5 @@
-import Button from "@/shared/ui-kit/Button";
 import Image from "next/image";
+import Button from "../Button";
 
 const SuccessModal = ({
 	setShowContractSuccessfullyCompleted,
@@ -10,7 +10,7 @@ const SuccessModal = ({
 			<div>
 				<div className="w-full flex justify-center xl:mt-[36px] md:mt-[45px] mt-[51px] xl:mb-[29px] md:mb-[22px] mb-[18px]">
 					<Image
-						src={"/images/contractSuccessfullyCompleted.png"}
+						src={"/contractSuccessfullyCompleted.png"}
 						width={257}
 						height={227}
 						alt=""
@@ -35,7 +35,7 @@ const SuccessModal = ({
 						<Button
 							onClick={() => handleCancelEndContract()}
 							type={"active"}
-							action={"End contract"}
+							action={"Done"}
 						/>
 					</div>
 				</div>

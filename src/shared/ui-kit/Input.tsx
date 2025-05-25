@@ -1,123 +1,61 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { EyeCloseIcon } from "../../../public/icons/EyeCloseIcon";
 import { EyeOpenIcon } from "../../../public/icons/eyeOpenIcon";
 import { UserIcon } from "../../../public/icons/userIcon";
 
-type InputProps = {
-	width: string;
-	height: string;
-	type: string;
-	icon?: string;
-	isIcon: boolean;
-	value?: number | string;
-	disabled?: boolean;
-	placeholder: string;
-	onChange?: (value: string) => void;
-};
-export const Input: React.FC<InputProps> = ({
-	width = "350px",
-	height = "42px",
-	type = "text",
-	icon = "",
-	isIcon = true,
-	value,
-	disabled = false,
-	placeholder = "",
-	onChange,
-}) => {
-	const [inputValue, setInputValue] = useState(value);
-	const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+interface InputProps {
+  width?: string;
+  height?: string;
+  type?: string;
+  isIcon?: boolean;
+  placeholder?: string;
+  value?: string;
+  disabled?: boolean;
+  onChange?: any;
+}
 
-	const togglePasswordVisibility = () => {
-		setIsPasswordVisible(prev => !prev);
-	};
+export const Input = ({
+  width = "350px",
+  height = "42px",
+  type = "text",
+  isIcon = true,
+  placeholder = "",
+  value,
+  disabled = false,
+  onChange,
+}: InputProps) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-	return (
-		<div
-			style={{ width, height }}
-			className="relative md:text-[16px] text-[14px]">
-			{disabled ? (
-				<input
-					type={
-						type === "password" && !isPasswordVisible
-							? "password"
-							: type === "number"
-							? "number"
-							: "text"
-					}
-					style={{ width, height }}
-					value={inputValue}
-					disabled
-					onChange={e => {
-						setInputValue(e.target.value);
-						onChange?.(e.target.value);
-					}}
-					placeholder={placeholder}
-					className={`border border-[#EAEAEA] bg-[#EAEAEA] rounded-[12px] outline-[#18470D] text-[#8B939F] relative ${
-						isIcon ? "pl-8" : icon === "" ? "pl-2" : "pl-6"
-					}`}
-				/>
-			) : inputValue === "" ? (
-				<input
-					type={
-						type === "password" && !isPasswordVisible
-							? "password"
-							: type === "number"
-							? "number"
-							: "text"
-					}
-					style={{ width, height }}
-					placeholder={placeholder}
-					onChange={e => {
-						setInputValue(e.target.value);
-						onChange?.(e.target.value);
-					}}
-					className={`border border-[#AEB3BC] rounded-[12px] outline-[#18470D] placeholder:text-[#8B939F] text-[#8B939F] relative ${
-						isIcon ? "pl-8" : icon === "" ? "pl-2" : "pl-6"
-					}`}
-				/>
-			) : (
-				// Default Value
-				<input
-					type={
-						type === "password" && !isPasswordVisible
-							? "password"
-							: type === "number"
-							? "number"
-							: "text"
-					}
-					style={{ width, height }}
-					value={inputValue}
-					placeholder={placeholder}
-					onChange={e => {
-						setInputValue(e.target.value);
-						onChange?.(e.target.value);
-					}}
-					className={`border border-[#AEB3BC] rounded-[12px] outline-[#18470D] placeholder:text-[#8B939F] text-[#8B939F] relative ${
-						isIcon ? "pl-8" : icon === "" ? "pl-2" : "pl-6"
-					}`}
-				/>
-			)}
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible((prev) => !prev);
+  };
 
-			{isIcon && type === "text" && (
-				<>
-					<div className={`absolute left-2 top-[13px]`}>
-						<UserIcon />
-					</div>
-				</>
-			)}
-			{icon === "Amount" && (
-				<div className="absolute left-2 top-0 h-full flex items-center">
-					<p className="text-[#8B939F]">€</p>
-				</div>
-			)}
-			{type === "password" && (
-				<div
-					className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer z-30"
-					onClick={togglePasswordVisibility}>
-					{isPasswordVisible ? <EyeCloseIcon /> : <EyeOpenIcon />}
-				</div>
-			)}
-		</div>
-	);
+  return (
+    <div style={{ width, height }} className="relative">
+      <input
+        type={type === "password" && !isPasswordVisible ? "password" : "text"}
+        style={{ width, height }}
+        className={`border border-[#AEB3BC] rounded-[12px] outline-[#18470D] relative ${
+          isIcon ? "pl-8" : "pl-2"
+        }`}
+        placeholder={placeholder}
+        value={value}
+        disabled={disabled}
+        onChange={onChange}
+      />
+      {isIcon && type === "text" && (
+        <div className="absolute left-2 top-[13px]">
+          <UserIcon />
+        </div>
+      )}
+      {type === "password" && (
+        <div
+          className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer z-30"
+          onClick={togglePasswordVisibility}
+        >
+          {isPasswordVisible ? <EyeCloseIcon /> : <EyeOpenIcon />}
+        </div>
+      )}
+    </div>
+  );
 };

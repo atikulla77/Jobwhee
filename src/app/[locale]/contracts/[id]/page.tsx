@@ -4,9 +4,9 @@ import { mockContractDetail } from "./data/mockContractDetail";
 import MilestoneTimeline from "@/components/contract-overview/MilestoneTimeline";
 import { useState } from "react";
 import ContractCompletedTimeline from "@/components/contract-overview/ContractCompletedTimeline";
-import ContractTabs from "@/shared/widgets/ContractTabs/ContractTabs";
 import ContractMetaRow from "@/components/contract-overview/ContractMetaRow";
 import ContractOverviewBlock from "@/components/contracts/ContractOverviewBlock";
+import ContractTabs from "@/shared/widgets/ContractTabs/ContractTabs";
 
 const page = () => {
 	const [activeTab, setActiveTab] = useState<string>("Overview");

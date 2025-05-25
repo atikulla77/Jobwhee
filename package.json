@@ -1,15 +1,15 @@
 {
-  "name": "prime-rem",
+  "name": "job-whee-client",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3002",
     "lint": "next lint"
   },
   "dependencies": {
-  "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
     "@heroicons/react": "^2.2.0",
@@ -17,6 +17,7 @@
     "@tailwindcss/postcss": "^4.1.4",
     "@tailwindcss/typography": "^0.5.16",
     "date-fns": "^4.1.0",
+    "dotenv": "^16.5.0",
     "firebase": "^11.5.0",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
@@ -32,19 +33,19 @@
     "react-player": "^2.16.0",
     "react-select": "^5.10.1",
     "react-toastify": "^11.0.5",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
     "swiper": "^11.2.2",
     "swr": "^2.3.0",
     "tailwind-merge": "^3.0.1"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.1",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/next-auth": "^3.15.0",
+    "@types/node": "22.10.7",
+    "@types/react": "19.0.7",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.17",
+    "typescript": "5.7.3"
   }
 }

@@ -1,5 +1,5 @@
 export const talent = {
-	contractId:"abc123",
+	contractId: "abc123",
 	currentStep: 1,
 	reason: "Job completed",
 	feedback: {
@@ -12,7 +12,7 @@ export const talent = {
 	},
 	talent: {
 		name: "Maria T.",
-		avatarUrl: "/images/avatar.png",
+		avatarUrl: "/images/topTalents/userPhoto.png",
 		location: "Athene, Greece",
 		rating: 4.9,
 		earnings: "$3K+",

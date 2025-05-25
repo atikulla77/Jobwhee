@@ -1,4 +1,5 @@
 import { useId } from "react";
+import { WhiteCheckIcon } from "../../../public/icons/WhiteCheckIcon";
 
 interface SwitchOptionProps {
   enabled?: boolean;

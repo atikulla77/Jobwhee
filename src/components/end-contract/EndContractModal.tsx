@@ -1,5 +1,5 @@
-import Button from "@/shared/ui-kit/Button";
 import Image from "next/image";
+import Button from "../contracts/Button";
 
 const EndContractModal = ({
 	setShowEndContractModal,
@@ -9,7 +9,7 @@ const EndContractModal = ({
 		<div>
 			<div className="w-full flex justify-center xl:mt-[8px] md:mt-[21px] mt-[27px] xl:mb-[29px] md:mb-[70px] mb-[18px]">
 				<Image
-					src={"/images/confirmationendofcontract.png"}
+					src={"/confirmationendofcontract.png"}
 					width={257}
 					height={227}
 					alt=""

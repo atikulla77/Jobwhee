@@ -1,0 +1,87 @@
+{
+  "HomePage": {
+    "header": {
+      "postJob": "POST A JOB",
+      "exploreJobs": "Explore Jobs",
+      "howItWorks": "How It Works",
+      "signIn": "Sign In",
+      "signup": "Sign Up"
+    },
+    "shared": {
+      "placeholder": "Find a job, talent or service",
+      "client": "Job",
+      "talent": "Talent",
+      "talentDesc": "Hire professionals effortlessly.",
+      "clientDesc": "Apply to jobs posted by clients",
+      "subscribe": "Subscribe",
+      "jobs": "Jobs",
+      "firstNameLastName": "First Name Last Name"
+    },
+    "hero": {
+      "contractBtn": "Sign Up for Contract"
+    },
+    "discover": "Discover",
+    "contract": {
+      "contractHeadline": "SUCCESSFUL CONTRACTS",
+      "contractItemTitle": "CONTRACT",
+      "client": "Client",
+      "talent": "Talent",
+      "description": "Description",
+      "jobDetails": "Job Details",
+      "startDate": "Start Date:",
+      "endDate": "End Date:",
+      "status": "Status:",
+      "budget": "Budget",
+      "paymentType": "Payment type:"
+    },
+    "perfectMatch": {
+      "perfectMatchHeadline": "FIND THE PERFECT MATCH IN SECONDS",
+      "signup": "Sign Up",
+      "contactUs": "About Us"
+    },
+    "stepsOfSuccess": "Steps of Success",
+    "advantages": "Advantages",
+    "advantagesOf": "ADVANTAGES OF THE PLATFORM",
+    "Video": {
+      "videoHeadline": "SEE JOBWHEE IN ACTION",
+      "sign-in": "Sign In",
+      "sign-up": "Sign Up",
+      "contract": {
+        "title": "The next is Yours!",
+        "btn": "Create Contract"
+      },
+      "send-message": {
+        "name": "Maria Smith",
+        "profession": "Math Teacher",
+        "btn": "Send Message"
+      },
+      "unlock": "Unlock Your Opportunity"
+    },
+    "topTalent": "TOP TALENTS READY TO HELP",
+    "getAnswers": "GET ANSWERS",
+    "aboutUs": "About Us",
+    "FAQ": "FAQ",
+    "moreFAQ": "More FAQ's",
+    "contracts": "Contracts",
+    "platform": "Platform",
+    "services": "Services",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "cookies": "Cookies",
+    "topTalentFooter": "Top Talents",
+    "allRightsReserved": "2025 JobWhee All rights reserved.",
+    "enterYourEmail": "Enter your email",
+    "subscribe": "Subscribe",
+    "subscribeNow": "Subscribe now ",
+    "beFirstToKnow": "and be the first to know!"
+  },
+  "AboutUsPage": {
+    "title": "About Us",
+    "CEO": "Founder & CEO"
+  },
+  "PrivacyPolicyPage": {
+    "title1": "Terms of Service",
+    "title2": "Privacy Policy",
+    "download": "Download"
+  }
+}

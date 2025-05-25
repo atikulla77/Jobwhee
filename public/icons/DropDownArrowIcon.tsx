@@ -1,4 +1,4 @@
-export const DropDownArrowIcon = ({color = "#545454"}) => {
+export const DropDownArrowIcon = () => {
   return (
     <svg
       width="16"
@@ -9,7 +9,7 @@ export const DropDownArrowIcon = ({color = "#545454"}) => {
     >
       <path
         d="M4 6L8 10L12 6"
-        stroke={color}
+        stroke="#545454"
         strokeWidth="1.4"
         strokeLinecap="round"
         strokeLinejoin="round"

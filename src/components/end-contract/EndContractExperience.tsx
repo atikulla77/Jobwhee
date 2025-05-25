@@ -1,12 +1,12 @@
 "use client";
-import { TextArea } from "@/shared/ui-kit/TextArea";
-import Button from "@/shared/ui-kit/Button";
 import { useState } from "react";
 import { GlobalModal } from "@/shared/ui-kit/GlobalModal";
 import FeedbackDropdown from "./FeedbackDropdown";
-import StarRating from "@/shared/ui-kit/StarRating";
 import { useRouter } from "next/navigation";
 import SuccessModal from "../contracts/modals/SuccessModal";
+import StarRating from "../contracts/StarRating";
+import Button from "../contracts/Button";
+import { TextArea } from "../contracts/TextArea";
 
 const EndContractExperience = ({ contractId }: any) => {
 	const router = useRouter();
@@ -14,11 +14,11 @@ const EndContractExperience = ({ contractId }: any) => {
 		showContractSuccessfullyCompleted,
 		setShowContractSuccessfullyCompleted,
 	] = useState(false);
-const [endContractErrors, setEndContractErrors] = useState({
-	reason: "",
-	ratings: "",
-	description: "",
-});
+	const [endContractErrors, setEndContractErrors] = useState({
+		reason: "",
+		ratings: "",
+		description: "",
+	});
 	const clientDropDownListData = [
 		{ id: 1, title: "The job has been completed successfully" },
 		{ id: 2, title: "The talent wasn’t the right fit" },
@@ -89,7 +89,7 @@ const [endContractErrors, setEndContractErrors] = useState({
 	const [selectedItem, setSelectedItem] = useState("");
 	const [isDescription, setIsDescription] = useState("");
 	const handleCancelEndContract = () => {
-		router.push(`/local/contracts/${contractId}`);
+		router.push(`/contracts`);
 	};
 
 	const handleRatingChange = (category: string, value: number) => {
@@ -123,10 +123,6 @@ const [endContractErrors, setEndContractErrors] = useState({
 
 		if (!allRated) {
 			errors.ratings = "Please rate all categories before submitting.";
-		}
-
-		if (!isDescription) {
-			errors.description = "Please provide feedback.";
 		}
 
 		setEndContractErrors(errors);
@@ -207,11 +203,6 @@ const [endContractErrors, setEndContractErrors] = useState({
 						height={"146px"}
 						responsiveWidthHeight="xl:!w-[620px] !w-[100%] !h-[146px]"
 					/>
-					{endContractErrors.description && (
-						<p className="text-red-500 text-sm mt-1">
-							{endContractErrors.description}
-						</p>
-					)}
 				</div>
 
 				{/* Buttons */}

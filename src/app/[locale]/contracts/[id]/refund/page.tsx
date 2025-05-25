@@ -1,3 +1,5 @@
+"use client"
+
 import ContractRefund from "@/components/contracts/ContractRefund";
 import GiveRefund from "@/components/contracts/GiveRefund";
 

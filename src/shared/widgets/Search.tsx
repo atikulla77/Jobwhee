@@ -7,6 +7,8 @@ import { ClientIcon } from "../../../public/icons/talent-client/ClientIcon";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { SearchIconCopy } from "../../../public/icons/talent-client/SearchIconCopy";
+import { BackPackIcon } from "../../../public/icons/talent-client/BackPackIcon";
+import { BackPackWithoutBG } from "../../../public/icons/global-icons/BackPackIconWithoutBG";
 
 export const Search = () => {
   const router = useRouter();
@@ -72,12 +74,12 @@ export const Search = () => {
           <input
             onKeyDown={handleKeyDown}
             placeholder={t("shared.placeholder")}
-            className="ml-2  2xl:pr-[14px] lg:ml-4 text-[#737373] placeholder:text-[#737373] placeholder:font-medium text-[12px] lg:text-base font-medium outline-none max-w-[165px] sm:max-w-[290px] lg:max-w-[255px] w-full 2xl:max-w-[706px]"
+            className="ml-2  lg:ml-4 text-[#737373] placeholder:text-[#737373] placeholder:font-medium text-[12px] lg:text-base font-medium outline-none max-w-[165px] sm:max-w-[290px] lg:max-w-[255px] min-w-full pr-[25%]  2xl:max-w-[800px]"
           />
         </div>
 
         <div className="flex items-center pr-[27px]">
-          <div className="h-6 w-px bg-[#737373] ml-5" />
+          <div className="h-6 w-px bg-[#737373] " />
           <div
             onClick={handleDropdownClick}
             className="flex items-center cursor-pointer ml-[15px] gap-[11px]"
@@ -96,17 +98,19 @@ export const Search = () => {
 
       <div
         className={`max-w-[239px] w-full h-fit px-[12px] py-[5px] bg-white absolute top-14 xl:top-16 right-0 shadow-md rounded-[12px] transition-all duration-300 ease-in-out
-          ${
-            isDropdownActive
-              ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
-              : "opacity-0 translate-y-[-10px] scale-95 pointer-events-none"
+          ${isDropdownActive
+            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+            : "opacity-0 translate-y-[-10px] scale-95 pointer-events-none"
           }`}
       >
         <div
           className="flex gap-[6px] cursor-pointer"
           onClick={() => handleOptionSelect(t("shared.talent"))}
         >
-          <TalentIcon />
+
+          <div className="w-[22px] h-[22px]">
+            <TalentIcon />
+          </div>
           <div>
             <p className="text-[14px] text-[#181818] font-semibold">
               {t("shared.talent")}
@@ -118,7 +122,9 @@ export const Search = () => {
           className="flex gap-[6px] mt-[5px] cursor-pointer"
           onClick={() => handleOptionSelect(t("shared.jobs"))}
         >
-          <ClientIcon />
+          <div className="w-[22px] h-[22px]">
+            <BackPackWithoutBG />
+          </div>
           <div>
             <p className="text-[14px] text-[#181818] font-semibold">
               {t("shared.jobs")}

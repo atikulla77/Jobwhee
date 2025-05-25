@@ -1,7 +1,7 @@
 "use client";
 import EndContractExperience from "@/components/end-contract/EndContractExperience";
-import TalentProfileCard from "@/shared/widgets/TalentProfileCard/TalentProfileCard";
 import { talent } from "./data/talent";
+import TalentProfileCard from "@/components/contracts/TalentProfileCard/TalentProfileCard";
 
 const page = () => {
 	return (

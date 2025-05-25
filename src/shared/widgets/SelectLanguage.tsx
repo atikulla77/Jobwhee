@@ -59,13 +59,14 @@ export const SelectLanguage: React.FC<SelectLanguageProps> = ({ theme }) => {
                   />
                   <div className="flex items-center gap-1">
                     <p
-                      className={`text-[14px] font-medium ${
-                        theme === "light" ? "text-black" : "text-white"
-                      }`}
+                      className={`text-[14px] font-medium ${theme === "light" ? "text-black" : "text-white"
+                        }`}
                     >
                       {lang.code.toUpperCase()}
                     </p>
-                    {theme === "light" ? <BlackArrow /> : <WhiteCheck />}
+                    <div className={`transform duration-300 ease-in-out ${isLngClicked ? "rotate-180" : "rotate-0"}`}>
+                      {theme === "light" ? <BlackArrow /> : <WhiteCheck />}
+                    </div>
                   </div>
                 </div>
               )
@@ -74,9 +75,8 @@ export const SelectLanguage: React.FC<SelectLanguageProps> = ({ theme }) => {
 
         {isOpen && (
           <div
-            className={`absolute w-[131px] h-auto px-2 py-2 -right-5 top-14 z-50 border border-[#949494] border-opacity-50 rounded-[14px] ${
-              theme === "light" ? "bg-white" : "bg-black"
-            }`}
+            className={`absolute w-[131px] h-auto px-2 py-2 -right-5 top-14 z-50 border border-[#949494] border-opacity-50 rounded-[14px] ${theme === "light" ? "bg-white" : "bg-black"
+              }`}
           >
             {languages.map((lang) => (
               <div
@@ -86,9 +86,8 @@ export const SelectLanguage: React.FC<SelectLanguageProps> = ({ theme }) => {
               >
                 <Image src={lang.image} width={24} height={24} alt="lang" />
                 <p
-                  className={`${
-                    theme === "light" ? "text-black" : "text-white"
-                  } text-sm`}
+                  className={`${theme === "light" ? "text-black" : "text-white"
+                    } text-sm`}
                 >
                   {lang.name}
                 </p>

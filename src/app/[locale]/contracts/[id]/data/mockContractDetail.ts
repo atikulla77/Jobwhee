@@ -26,7 +26,7 @@ export const mockContractDetail = {
 			id: 3,
 			title: "Week 3",
 			status: "not_started",
-			amount: 500,
+			amount: 300,
 			dueDate: "March 01 2025",
 		},
 		{
@@ -37,7 +37,7 @@ export const mockContractDetail = {
 			dueDate: "March 01 2025",
 		},
 	],
-	participants: [{ name: "Maria T.", avatarUrl: "/images/maria.png" }],
+	participants: [{ name: "Maria T.", avatarUrl: "../images/maria.png" }],
 	files: [
 		{
 			uploader: "Eleni C.",

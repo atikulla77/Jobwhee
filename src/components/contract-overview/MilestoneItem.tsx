@@ -1,17 +1,18 @@
 "use client";
 
-import Button from "@/shared/ui-kit/Button";
 import CustomDatePicker from "@/shared/ui-kit/CustomDatePicker";
 import { Input } from "@/shared/ui-kit/Input";
 import { GlobalModal } from "@/shared/ui-kit/GlobalModal";
-import ManageMilestoneModal from "@/shared/widgets/ManageMilestoneModal/ManageMilestoneModal";
+import ManageMilestoneModal from "@/components/contract-overview/ManageMilestoneModal";
 import { useState } from "react";
 import MilestoneItemCard from "./MilestoneItemCard";
+import Button from "../contracts/Button";
 
 const MilestoneItem = ({ contract, setShowContractMetaData }: any) => {
-	const [showPaymentModal, setShowPaymentModal] = useState(false);
 	const [showAddMilestoneModal, setShowAddMilestoneModal] = useState(false);
 	const [showMilestoneModal, setShowMilestoneModal] = useState(false);
+	const [showStartTheMilestoneModal, setShowStartTheMilestoneModal] =
+		useState(false);
 	const [date, setDate] = useState<Date | null>(null);
 	const [errors, setErrors] = useState({
 		title: "",
@@ -80,36 +81,6 @@ const MilestoneItem = ({ contract, setShowContractMetaData }: any) => {
 		// Clear errors after successful submission
 		setErrors({ title: "", amount: "", date: "" });
 	};
-	// handle release closed milestone
-	const handleClosed = (id: string) => {
-		const updatedMilestones = contract.milestones.map((contr: any) =>
-			contr.id === id ? { ...contr, status: "closed" } : contr
-		);
-
-		const paidMilestonesCount = updatedMilestones.filter(
-			(milestone: any) => milestone.status === "closed"
-		).length;
-		const remainingMilestonesCount = updatedMilestones.filter(
-			(milestone: any) => milestone.status !== "closed"
-		).length;
-
-		const totalSpend = updatedMilestones
-			.filter((milestone: any) => milestone.status === "closed")
-			.reduce((acc: number, milestone: any) => acc + milestone.amount, 0);
-
-		const inEscrow = updatedMilestones
-			.filter((milestone: any) => milestone.status === "ongoing")
-			.reduce((acc: number, milestone: any) => acc + milestone.amount, 0);
-
-		setShowContractMetaData({
-			...contract,
-			milestones: updatedMilestones,
-			milestonesPaid: paidMilestonesCount,
-			milestonesRemaining: remainingMilestonesCount,
-			totalSpend,
-			inEscrow,
-		});
-	};
 
 	// handle delete milestone
 	const handleDeleteMilestone = (id: string) => {
@@ -131,13 +102,12 @@ const MilestoneItem = ({ contract, setShowContractMetaData }: any) => {
 						className="max-h-[630px] overflow-hidden overflow-y-scroll   ">
 						{contract?.milestones?.map((item: any, index: number) => (
 							<MilestoneItemCard
+								contract={contract}
+								setShowContractMetaData={setShowContractMetaData}
 								hasOngoing={hasOngoing}
-								handleClosed={handleClosed}
 								index={index}
 								key={item.id}
 								item={item}
-								showPaymentModal={showPaymentModal}
-								setShowPaymentModal={setShowPaymentModal}
 							/>
 						))}
 					</div>
@@ -274,7 +244,7 @@ const MilestoneItem = ({ contract, setShowContractMetaData }: any) => {
 				<GlobalModal
 					isOpen={showMilestoneModal}
 					onClose={() => setShowMilestoneModal(false)}
-					classes="xl:w-[860px] md:w-[556px] w-[335px] xl:h-[768px] md:h-[590px] h-[665px] xl:px-[38px] px-[24px] xl:py-[28px] py-[24px]">
+					classes="xl:w-[860px] md:w-[556px] w-[335px] xl:h-[774px] md:h-[700px] h-[665px] xl:px-[38px] px-[24px] xl:py-[28px] py-[24px]">
 					<ManageMilestoneModal
 						handleDeleteMilestone={handleDeleteMilestone}
 						setShowMilestoneModal={setShowMilestoneModal}

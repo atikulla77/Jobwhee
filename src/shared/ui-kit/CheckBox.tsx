@@ -7,12 +7,7 @@ interface CheckBoxProps {
   label?: string;
   labelPosition?: "left" | "right";
 }
-const CheckBox: React.FC<CheckBoxProps> = ({
-  checked,
-  label,
-  setChecked,
-  labelPosition = "right",
-}) => {
+const CheckBox: React.FC<CheckBoxProps> = ({ checked, label, setChecked, labelPosition="right" }) => {
   const id = useId();
   return (
     <label className="flex items-center cursor-pointer w-fit" htmlFor={id}>
@@ -30,13 +25,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({
       >
         {checked && <WhiteCheckIcon />}
       </div>
-      <span
-        className={`text-gray-800 select-none ${
-          labelPosition === "right" ? "ml-[8px]" : "order-[-1] mr-[8px]"
-        }`}
-      >
-        {label}
-      </span>
+      <span className={`text-gray-800 select-none ${labelPosition === "right" ? "ml-[8px]" : "order-[-1] mr-[8px]"}`}>{label}</span>
     </label>
   );
 };
