@@ -1,4 +1,7 @@
-export const DropDownArrowIcon = () => {
+type DropDownArrowIconProps = {
+  color?: string;
+};
+export const DropDownArrowIcon: React.FC<DropDownArrowIconProps> = ({color = "#545454"}) => {
   return (
     <svg
       width="16"
@@ -9,7 +12,7 @@ export const DropDownArrowIcon = () => {
     >
       <path
         d="M4 6L8 10L12 6"
-        stroke="#545454"
+        stroke={color}
         strokeWidth="1.4"
         strokeLinecap="round"
         strokeLinejoin="round"

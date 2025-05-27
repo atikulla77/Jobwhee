@@ -9,12 +9,12 @@ export const acceptRejectMockData = [
     moneyEarned: "$700+",
     ratings: 4.2,
     skills: [
-      "Linear Algebra ",
-      "Geometry",
-      "Statistics & Probability",
       "Algebra",
-      "Test Skill",
+      "Linear Algebra ",
+      "Statistics & Probability",
       "Calculus",
+      "Geometry",
+      "Test Skill",
     ],
     coverLetter:
       "1 Hi! I'm an experienced math teacher, working on mat tutoring for 8 years...",

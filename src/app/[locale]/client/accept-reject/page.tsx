@@ -20,8 +20,8 @@ const AcceptReject = () => {
         </div>
       </div>
 
-      {activeTab === "View Job post" && <ViewJobPost />}
-      {activeTab === "Invite Talents" && <InviteTalent />}
+      {activeTab === "View Job post" && <ViewJobPost acceptRejectData={acceptRejectMockData} />}
+      {activeTab === "Invite Talents" && <InviteTalent acceptRejectData={acceptRejectMockData} />}
       {activeTab === "Review applications" && (
         <ReviewApplications acceptRejectData={acceptRejectMockData} />
       )}

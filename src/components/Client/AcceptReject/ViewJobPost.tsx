@@ -1,4 +1,4 @@
-const ViewJobPost = () => {
+const ViewJobPost = ({ acceptRejectData }: any) => {
   return <div></div>;
 };
 

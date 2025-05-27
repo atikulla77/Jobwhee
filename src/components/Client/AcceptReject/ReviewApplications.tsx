@@ -261,7 +261,7 @@ const ReviewApplications = ({ acceptRejectData }: any) => {
                       <div className="flex gap-[14px_6px] 2xl:gap-[12px_6px] xl:gap-[7px_6px] flex-wrap w-full xl:w-[`221px] 2xl:w-[226px] md:pt-0 pt-[21px]">
                         {userData.skills
                           .slice(0, skillsNumber)
-                          .map((skill, i) => (
+                          .map((skill:any, i:number) => (
                             <div key={i}>
                               <SmallSkill skill={skill} />
                             </div>

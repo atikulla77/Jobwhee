@@ -25,13 +25,16 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ imgSrc, isOnline, hasBadg
         </div>
       )}
       {hasBadge && (
-        <Image
-          width={30}
-          height={30}
-          src="/images/all-images/proTalentBadge.png"
-          alt="pro-talent-badge"
-          className="w-[30px] h-[30px] left-2/4 -translate-x-2/4 absolute bottom-0"
-        />
+        <div className="w-full flex justify-center absolute left-0 2xl:bottom-[-7px] bottom-[-1px]">
+          <Image
+            width={28}
+            height={30}
+            src="/images/all-images/proTalentBadge.png"
+            alt="pro-talent-badge"
+            className="w-[28px] h-[30px] "
+          />
+        </div>
+
       )}
     </div>
   );

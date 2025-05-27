@@ -6,6 +6,7 @@ interface GlobalModalProps {
 	onClose: () => void;
 	children: React.ReactNode;
 	classes?: string;
+	containerClasses?: string;
 }
 
 export const GlobalModal: React.FC<GlobalModalProps> = ({
@@ -13,6 +14,7 @@ export const GlobalModal: React.FC<GlobalModalProps> = ({
 	onClose,
 	children,
 	classes,
+	containerClasses
 }) => {
 	useEffect(() => {
 		const handleEsc = (e: KeyboardEvent) => {
@@ -36,7 +38,7 @@ export const GlobalModal: React.FC<GlobalModalProps> = ({
 
 	return (
 		<div
-			className={`fixed inset-0 z-50  flex justify-center items-center bg-[#00000069] cursor-default`}>
+			className={`fixed inset-0 z-50 ${containerClasses} flex justify-center items-center bg-[#00000069] cursor-default`}>
 			<div className={`${classes} bg-white rounded-[30px] relative`}>
 				{/* Close Button */}
 				<div
